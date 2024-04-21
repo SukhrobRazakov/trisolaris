@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<main class="content">
+
+    <h1>{{ title }}</h1>
+    <h2>сегодня и на Июнь 2024</h2>
+    <!-- Основной контент страницы -->
+    <div class="search2" style="font-size: 30px;">
+        <input type="text"  placeholder="Найти мероприятия .....">
+        <i class="#"></i>
+    </div>
+    <ul>
+        {% for p in posts %}
+        <li>
+            <h2>{{ p.title }}</h2>
+            <p>{{ p.content }}</p>
+            <p><a href="{% url 'post' p.id %}">Читат пост</a></p>
+            {% if not forloop.last %}
+            <hr>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+  </main>
+{% endblock %}

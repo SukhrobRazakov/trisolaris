@@ -1,0 +1,299 @@
+
+html, body {
+    height: 100%; /* Указываем, что высота всей страницы должна быть 100% */
+    margin: 0; /* Сбрасываем марджин */
+}
+
+body {
+    font-family: "Dosis", sans-serif;
+    font-weight: 400;   /* Указываем желаемый вес шрифта */
+    color: #464545; /* Задаем цвет текста */
+    font-style: normal;  /* Нормальный стиль шрифта */
+    display: flex; /* Включаем flex-контейнер для всего body */
+    flex-direction: column; /* Делаем основное направление колонной */
+    justify-content: space-between; /* Распределяем пространство между шапкой, контентом и футером */
+}
+
+.content {
+    flex: 1; /* Элементу content позволяется расти и занимать необходимое пространство */
+    margin-left: 5%; /* Отступ слева на 5% */
+    margin-right: 5%; /* Отступ справа на 5% */
+}
+/* стили для поисковика */
+.search {
+    width: 200px; /* Пример: установка ширины для блока поиска */
+    border: none !important; /* Убираем рамку */
+    box-shadow: none; /* Убираем тень */
+
+}
+
+.search input[type="text"] {
+    width: 130%; /* Пример: ширина поля ввода равна 100% ширины родительского блока */
+    width: 100%; /* Ширина поля ввода равна 100% ширины родительского блока */
+    padding: 2px; /* Добавляем внутренний отступ для улучшения визуального восприятия */
+    border: none; /* Убираем рамку */
+    outline: none; /* Убираем светлую обводку при фокусе */
+    background-color: #f2eeee; /* Задаем цвет фона */
+    font-size: 14px; /* Увеличиваем размер шрифта */
+}
+
+.search2 {
+    width: 600px; /* Пример: установка ширины для блока поиска */
+    border: none !important; /* Убираем рамку */
+    box-shadow: none; /* Убираем тень */
+
+}
+
+.search2 input[type="text"] {
+    width: 130%; /* Пример: ширина поля ввода равна 100% ширины родительского блока */
+    width: 100%; /* Ширина поля ввода равна 100% ширины родительского блока */
+    padding: 2px; /* Добавляем внутренний отступ для улучшения визуального восприятия */
+    border: none; /* Убираем рамку */
+    outline: none; /* Убираем светлую обводку при фокусе */
+    background-color: #f2eeee; /* Задаем цвет фона */
+    font-size: 28px; /* Увеличиваем размер шрифта */
+}
+
+
+/* /* Основные стили для выпадающего меню профиля ------------------------------------------------ */
+/* Стили для иконки профиля, чтобы курсор изменялся на указатель */
+.profile .fas {
+    cursor: pointer;
+}
+
+.profile {
+    position: initial; /* Это важно для корректного позиционирования выпадающего меню */
+}
+
+.profile .dropdown-content {
+    display: none;
+    position: fixed; /* Фиксированное позиционирование относительно окна браузера */
+    top: 95px; /* Расположение меню ниже иконки профиля */
+    right: 1000px; /* Прижимаем к правой стороне экрана right: */
+    width: 30%; /* Ширина 25% от ширины экрана */
+    background-color: rgb(240, 240, 0); /* Желтый фон */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Тень для меню */
+    z-index: 1000; /* Убедитесь, что выпадающее меню будет над другими элементами */
+    border-radius: 3px;
+ 
+}
+
+
+/* Стили для элементов внутри выпадающего меню */
+.profile .dropdown-content div {
+    color: black;
+    padding: 12px 16px;  /* Внутренние отступы для элементов меню */
+    text-decoration: none;
+    display: block;
+    text-decoration: none; /* Убирает подчеркивание */
+}
+
+/* Стили для элементов меню при наведении */
+.profile .dropdown-content div:hover {
+    background-color: #d4d769; /* Цвет фона при наведении */
+    content: none;
+}
+
+/* Граница внутри выпадающего меню */
+.profile .dropdown-content hr {
+    border: none;
+    height: 3px;
+    background-color: #da6868; /* Цвет границы */
+    margin: 10px 0; /* Отступы для границы */
+}
+
+
+/* --------------------------------------------------------------------------------------- */
+header {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff5f5; /* Пример фона шапки */
+    padding: 20px; /* Пример отступов */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Тень под шапкой */
+    align-items: center;
+    font-family: Arial, sans-serif;
+    position: relative;
+    z-index: 1000; /* Убедитесь, что шапка будет над другими элементами */
+    
+}
+
+/* Стили для контейнера с логотипом, названием и элементами справа */
+.header-container {
+    width: 90%; /* Задаем такую же ширину, как и линии */
+    margin: 0 auto; /* Центрирование контейнера */
+    display: flex;
+    justify-content: space-between; /* Распределение пространства между элементами */
+    align-items: center;
+}
+/* --------------------------------------------------------------------------------------- */
+.top-row, .bottom-row {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo img {
+    height: 30px; /* Высота логотипа */
+}
+
+/* nazvaniya sayta */
+.site-name {
+    font-size: 20px;
+    font-weight: 200;
+    font-style: normal;
+    flex-grow: 1;
+    color: #464545;
+    text-align: left;
+    margin-left: 5px; /* Отступ слева от логотипа */
+    text-decoration: none; /* Убираем подчеркивание */
+}
+
+.right-section {
+    display: flex;
+    font-size: 22px; /* Увеличиваем размер шрифта иконок */
+    margin: 0 10px; /* Добавляем немного пространства между иконками */
+    align-items: center;
+}
+
+
+.search {
+    display: flex;
+    align-items: center;
+}
+
+.search input {
+    padding: 5px;
+    margin-right: 5px;
+}
+
+
+.favorites, .profile {
+    margin-left: 20px;
+}
+
+.divider {  
+    height: 1px;
+    width: 90%; /* Ширина разделительной линии */
+    background-color: rgb(219, 217, 217);
+    margin: 20px 0;
+}
+
+.bottom-row {
+    justify-content: space-around;
+}
+
+.bottom-row a {
+    padding: 5px 1px; 
+    cursor: pointer;
+    color: black; /* Убедитесь, что цвет текста соответствует вашему дизайну */
+    text-decoration: none; /* Убирает подчеркивание у ссылок */
+    display: block; /* Расширяет кликабельную область на весь контейнер */
+}
+
+.menu-item {
+    display: inline-block;
+    padding: 5px 1px; /* Увеличиваем внутренние отступы для более высокой подсветки */
+    cursor: pointer;
+    position: relative; /* Для позиционирования выпадающего меню */
+    /*  */
+    flex: 1;
+    text-align: center;
+    z-index: 1; /* Убедимся, что текст будет над фоном */
+    /*  */
+    width: 100%;
+    cursor: pointer;
+
+
+    margin: 0; /* Добавляем небольшие отступы между элементами */
+    transition: background-color 0.3s; /* Плавное изменение фона */
+    border-radius: 0px;
+
+    height: 100%; /* Сделать высоту элементов меню равной высоте шапки */
+}
+
+/* Стили для подсветки активного элемента меню */
+.menu-item.active {
+    background-color: #f0f0f0; /* Цвет фона активного элемента */
+    box-shadow: 0px 0px 10px 5px rgba(102, 102, 111, 0.5); /* Тень вокруг активного элемента */
+    /* border-radius: 5px; Скругление углов */
+}
+
+
+.menu-item:hover, .menu-item.active {
+    background-color: rgb(236, 228, 228) /* Цвет фона при наведении и активном состоянии */
+    
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;                                                                                       /*   */
+    width: 23.7%; /* Полная ширина элемента меню */
+    background-color: rgb(236, 228, 228);
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    
+    left: 0; /* Выравнивание по левому краю элемента меню */
+    top: 100%; /* Располагаем меню прямо под родительским элементом */
+}
+
+.dropdown-content div {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ---------------------------------------------------- */
+    /* Стили для подвала */
+  
+    .footer {
+        background-color: #333; /* Серый фон */
+        color: rgb(161, 160, 160); /* Белый текст */
+        text-align: center; /* Выравнивание текста по центру */
+        padding: 20px;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+    
+        /* position: absolute;
+        bottom: 0;
+        width: 100%; */
+      }
+      
+      .footer-section h2, .footer-section p, .footer-section ul, .footer-section li {
+        text-align: left;
+        margin-bottom: 20px; /* Добавляет 20px пространства под заголовком */
+      }
+      
+      .footer-section {
+        width: 45%;
+      }
+      
+      .footer-section h2 {
+        margin-top: 0;
+      }
+      
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+      }
+      
+      .footer-section li, .footer-section p {
+        line-height: 1.6;
+      }
+    
+      .footer a:hover {
+        text-decoration: underline; /* Подчеркивание при наведении */
+      }
+    
+        
+      .footer a {
+        color: white; /* Белый цвет ссылок */
+        text-decoration: none; /* Убрать подчёркивание у ссылок */
+        margin: 0 10px; /* Отступы вокруг ссылок */
+      }
+      

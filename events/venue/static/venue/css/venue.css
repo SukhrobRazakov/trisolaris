@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    list-style: none;
+    text-decoration: none;
+  }
+  
+  body {
+    height: 100vh;
+    background: #ffff;
+  }
+  
+  body, html {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; /* Контент идет один за другим сверху вниз */
+  }
+  
+  .content {
+    flex: 1; /* Это позволяет .content растягиваться и занимать всё доступное пространство */
+    /* Добавьте минимальную высоту для .content, чтобы увидеть эффект, если контент мал */
+    min-height: calc(100vh - 120px); /* 100vh - высота вашего футера, чтобы .content занимал оставшееся пространство */
+  }
+  
+ .trog {
+    position: fixed;
+    top: 10;
+    left: 10;
+    right: 0;
+    background: #dee5f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+  } 
+
+  .trog ul li {
+    margin-right: 40px;
+    padding: 1px 0;
+  }
+
+  .ger {
+    position: fixed;
+    top: 20;
+    left: 0;
+    right: 0;
+    background: #dee5f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+  }
+
+  
+  
+  header .logo img {
+    margin-right: 15px;
+    width: 5vw; /* Логотип будет 10% от ширины области просмотра */ /* Adjust the width as needed */
+    height: auto; /* This will maintain the aspect ratio */
+  }
+  
+  header .logo h1 {
+    font-size: 17px; /* Меньшее значение уменьшит размер текста */
+  
+  }
+  header .logo {
+    display: flex;
+    align-items: center;
+    color: #2a2222;
+    transition: 0.5s;
+  }
+  header .logo:hover {
+    transform: scale(1.02);
+  }
+  
+  header nav ul li {
+    margin-right: 40px;
+    padding: 1px 0;
+  }
+  
+  header nav ul li {
+    position: relative;
+    float: left;
+  }
+  header nav ul li a {
+    padding: 15px;
+    font-weight: 545;
+    color: #010101;
+    font-size: 16px;
+    display: block;
+  }
+  header nav ul li a:hover {
+    background: #b6bece;
+    color: #242121;
+  }
+  
+  nav ul li ul {
+    position: absolute;
+    left: 0;
+    width: 180;
+    background:  #dee5f0;
+    display: none;
+  }
+  
+  nav ul li ul li {
+    width: 100%;
+  }
+  
+  nav ul li:hover > ul {
+    display: initial;
+  }
+  
+  
+  /*==========================================================*/
+  
+    /* Стили для подвала */
+  
+  .footer {
+    background-color: #333; /* Серый фон */
+    color: white; /* Белый текст */
+    text-align: center; /* Выравнивание текста по центру */
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+
+    /* position: absolute;
+    bottom: 0;
+    width: 100%; */
+  }
+  
+  .footer-section h2, .footer-section p, .footer-section ul, .footer-section li {
+    text-align: left;
+    margin-bottom: 20px; /* Добавляет 20px пространства под заголовком */
+  }
+  
+  .footer-section {
+    width: 45%;
+  }
+  
+  .footer-section h2 {
+    margin-top: 0;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section li, .footer-section p {
+    line-height: 1.6;
+  }
+
+  .footer a:hover {
+    text-decoration: underline; /* Подчеркивание при наведении */
+  }
+
+    
+  .footer a {
+    color: white; /* Белый цвет ссылок */
+    text-decoration: none; /* Убрать подчёркивание у ссылок */
+    margin: 0 10px; /* Отступы вокруг ссылок */
+  }
+  
