@@ -1,0 +1,11 @@
+digraph models {
+  "LogEntry" -> "User" [label="user (ForeignKey)"];
+  "LogEntry" -> "ContentType" [label="content_type (ForeignKey)"];
+  "Permission" -> "ContentType" [label="content_type (ForeignKey)"];
+  "Group" -> "Permission" [label="permissions (ManyToManyField)"];
+  "User" -> "Group" [label="groups (ManyToManyField)"];
+  "User" -> "Permission" [label="user_permissions (ManyToManyField)"];
+  "Venue" -> "Category" [label="cat (ForeignKey)"];
+  "Venue" -> "User" [label="author (ForeignKey)"];
+  "Venue" -> "TagPost" [label="tags (ManyToManyField)"];
+}

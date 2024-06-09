@@ -1,0 +1,735 @@
+{% load static %}
+
+<!DOCTYPE HTML>
+<html lang="ru">
+
+<head>
+    <title>Личный кабинет организатора</title>
+    <meta name="description"
+        content="Личный кабинет позволяет организаторам мероприятий контролировать отображение их мероприятий в афише города." />
+
+    <meta name="google-site-verification" content="RHmwWct1bp0jtTDYLsCVuyoyI2a9TaDfMKmDqFpfq2g" />
+    <meta name='yandex-verification' content='68886b663015b804' />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="//127.0.0.1:8000/static/venue/img/oltin.jpg" />
+
+
+
+
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+    <link rel="stylesheet" href="/static/css/style.css?v=59l" />
+
+    <style>
+        .btn {
+            font-size: 100%;
+        }
+
+        svg {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            display: inline-block;
+            opacity: 0.9;
+            margin-top: -3px;
+        }
+    </style>
+
+
+    <style>
+        .select2 {}
+
+        .select2-container--default .select2-results>.select2-results__options {
+            max-height: 400px;
+        }
+
+        .select2-container--default .select2-results>.select2-results__options {
+            font-size: 1.4rem;
+            line-height: 1.1rem;
+        }
+
+        .select2-results__option {
+            /* padding: 0; */
+        }
+
+        .select2-container--default .select2-results__group {
+            padding: 2px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            height: 30px;
+        }
+
+        .select2-container .select2-selection--single {
+            height: 30px;
+        }
+
+        .select2-results strong {
+            font-weight: bold;
+            padding: 5px 0;
+        }
+
+        body {
+            background: #fbfafa;
+        }
+
+        header.main,
+        footer.main {
+            background: #474747;
+        }
+
+        .highlight {
+            background: #f8f9de;
+            box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+        }
+
+        small {
+            display: inline-block;
+        }
+
+        .progress {
+            height: 20px;
+            width: 100%;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #345BA9;
+            width: 0%;
+            border-radius: 5px;
+            transition: width 2s ease-in-out;
+        }
+
+        .obj-links a {
+            margin-right: 15px;
+        }
+
+        .dropdown-menu {
+            min-width: 250px;
+        }
+
+
+        .event-image-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .active-event-image {
+            text-decoration: underline;
+            font-size: 110%;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .inactive-event-image {
+            color: #333;
+            width: 100%;
+            min-height: 200px;
+        }
+
+        .upload-image {
+            text-align: center;
+            margin: 30px;
+            font-size: 30px;
+            color: red;
+            text-decoration: underline;
+        }
+
+        .extra-photos {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+    </style>
+
+</head>
+
+
+<body>
+    <header class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-1 col-sm-4 col-lg-4" style="padding-right: 0; padding-top: 9px;">
+                    <a class="visible-xs-inline-block d-inline d-md-none" style="margin-top: 0px;" href="/">
+                        <svg>
+                            <use xlink:href="/static/fa/icons.svg?v=9m#map-marker"></use>
+                        </svg>
+                    </a>
+
+
+                    <a href="/" style="color: #e6a33e; text-decoration: none; " target="_blank"
+                        class="btn-top hidden-xs d-none d-md-inline" style="margin-right: 10px;"
+                        title="ГородЗовёт gorodzovet.ru">
+                        <svg>
+                            <use xlink:href="/static/fa/icons.svg?v=9m#map-marker"></use>
+                        </svg>
+                        Начало
+                    </a>
+                    <i class="fas fa-angle-right hidden-md hidden-sm hidden-xs d-none d-lg-inline"
+                        style="opacity: 0.5; color: #fff;"></i>
+
+                    <a href="/" style="margin-left: 40px; color: #e2ded8;"
+                        title="Кабинет организатора admin.gorodzovet.ru"
+                        class="hidden-sm hidden-xs d-none d-md-inline btn-top top-link-home" style="color: #fff;">
+                        Кабинет организатора
+                    </a>
+
+                </div>
+                <div class="col-11 col-sm-8 col-lg-8" style="text-align: right; padding-top: 5px; padding-left: 0;">
+
+
+
+
+                    <div class="dropdown btn-group">
+
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu5"
+                            data-bs-toggle="dropdown" data-toggle="dropdown" aria-expanded="false">
+                            <svg>
+                                <use xlink:href="/static/fa/icons.svg?v=9m#info-circle"></use>
+                            </svg>
+                            <span class="" style="color: #f5f5f5;">Поддержка</span>
+                            <span class="caret"></span>
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu5">
+                            <a class="dropdown-item" href="/ru/faq/"
+                                style="border-bottom: 1px solid #fff; padding-bottom: 2px;">
+                                <svg>
+                                    <use xlink:href="/static/fa/icons.svg?v=9m#info-circle"></use>
+                                </svg> Ответы на частые вопросы
+                            </a>
+                            <a class="dropdown-item" tabindex="-1" href="/terms/">
+                                <svg>
+                                    <use xlink:href="/static/fa/icons.svg?v=9m#list"></use>
+                                </svg> Правила
+                            </a>
+                            <a class="dropdown-item" href="#" onclick="Chatra('openChat', true)">
+                                <svg>
+                                    <use xlink:href="/static/fa/icons.svg?v=9m#comments"></use>
+                                </svg>
+                                Онлайн чат
+                            </a>
+                        </div>
+
+
+
+                    </div>
+
+
+
+
+
+                    <a style="color: #f5f5f5;" style="margin-left: 15px" class="btn btn-default" href="#"
+                        data-bs-toggle="modal" data-bs-target="#myModal">
+                        <svg>
+                            <use xlink:href="/static/fa/icons.svg?v=9m#sign-in-alt"></use>
+                        </svg>
+                        Войти
+                    </a>
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <div class="container" style="padding-top: 60px; min-height: 80vh;">
+
+
+
+
+
+        <div class="admin-cart" style="padding: 20px 15px; margin: 20px 0">
+            <div class="row " style="padding-top: 30px">
+
+                <div class=" col-md-6">
+
+
+                    <h1>Мероприятия вашего города</h1>
+                    Сайт для посетителей - <a href="/" target="_blank">127.0.0.1:8000</a>
+                    <br /><br>
+                    Платформа использует несколько источников информации о меропритиях, в том числе соцсети.
+                    Работает в нескольких городах.
+                    <br />
+                    Вы можете добавить свое мероприятие. Быстро и бесплатно.
+                    <br /><br />
+
+                    <a class="btn btn-lg btn-primary"
+                        style="display: block; margin: 2rem 0; max-width: 300px; white-space: normal" href="#"
+                        data-bs-toggle="modal" data-bs-target="#myModal">
+                        <svg>
+                            <use xlink:href="/static/fa/icons.svg?v=9m#plus"></use>
+                        </svg>
+
+                        <span style="padding-bottom:2px; border-bottom:1px solid #fff">Добавить мероприятие</span>
+                    </a>
+
+
+                    <h3 style="margin: 20px 0 10px">Личный кабинет организатора. <br>Здесь вы можете</h3>
+                    - бесплатно
+                    <a href="#" style="font-weight: bold; color: #000; text-decoration: underline;"
+                        data-bs-toggle="modal" data-bs-target="#myModal">добавить свое мероприятие</a> на эту платформу
+                    <br />- проверить, как оно отображается
+                    <br />- обновить информацию
+                    <br />- при необходимости снять мероприятия с публикации
+                    <br />- повысить рейтинг мероприятия и поднять его в списке
+
+
+                </div>
+                <div class="col-md-6">
+                    <img src="{% static 'venue\img\re.png' %}"
+                        style="max-height: 600px; max-width: 100%; margin-bottom: 40px" />
+                </div>
+
+            </div>
+
+
+
+            <h3 style="margin-top: 2rem;">Частые вопросы</h3>
+            <ul style="padding-left: 2rem; list-style-type: square;">
+
+                <li>
+                    <a href="/ru/faq/#collapse1">
+                        Что такое организа меропритий и как я могу разместить свое мероприятие на сайте?
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ru/faq/#collapse2">
+                        Какие типы мероприятий можно размещать на платформе, а какие - нельзя?
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ru/faq/#collapse3">
+                        Как я могу изменить или удалить свой анонс на сайте?
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ru/faq/#collapse4">
+                        Размещение бесплатное? Точно?
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ru/faq/#collapse5">
+                        Стоит ли мне использовать платное размещение моего анонса на сайте?
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ru/faq/#collapse6">
+                        Могу ли я организовать регистрацию участников на свои мероприятия через этот платформу?
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ru/faq/#collapse7">
+                        Могу ли я продавать билеты на свои мероприятия через этот платформу?
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ru/faq/#collapse11">
+                        Как разместить пост в пабликах этот платформу в ВК?
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ru/faq/#collapse8">
+                        Что делать, если есть проблема при размещении мероприятия на сайте?
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ru/faq/#collapse9">
+                        Какова политика конфиденциальности на этот платформу?
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ru/faq/#collapse10">
+                        Как я могу связаться с командой поддержки этот платформу, если у меня есть дополнительные
+                        вопросы или проблемы?
+                    </a>
+                </li>
+
+                <li>
+                    <a href="/ru/faq/#collapse12">
+                        О маркировке рекламы
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <div class="row" style="margin-top: 20px; margin-bottom: 50px; background: #eee">
+
+
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 id="modalTitle">Мир научных меропритий</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" style="background: #fbf8f8;">
+
+
+
+                        <div class="social-login blue_bg" style="padding-bottom: 0px">
+
+                            <h2 style="margin-bottom: 4rem;">Моментальный вход</h2>
+
+
+
+
+                            <style>
+                                .login-button {
+                                    outline: medium none;
+                                    text-decoration: none;
+                                    cursor: pointer;
+                                    position: relative;
+                                    flex-grow: 1;
+                                    width: calc(100% - 20px);
+                                    text-align: left;
+                                    padding-left: 10%;
+                                    margin: 0 10px 20px;
+                                    font-weight: 500;
+                                    border-width: 0;
+                                    border-radius: 3px;
+                                    display: inline-block;
+                                    font-size: 16px;
+                                    height: 46px;
+                                    line-height: 46px;
+                                    font-family: Roboto, Formular, Arial, Helvetica, sans-serif;
+                                    color: #757575;
+                                    background-color: #fff;
+                                    box-shadow: 0 2px 4px 0 #223C5033;
+                                }
+
+                                .login-button:hover {
+                                    opacity: 0.9;
+                                    box-shadow: 0 4px 6px 0 #dad7d7;
+                                }
+
+                                .login-button i {
+                                    text-align: center;
+                                    font-size: 24px;
+                                    display: inline-block;
+                                    margin-right: 10px;
+                                    vertical-align: middle;
+                                    height: 24px;
+                                    width: 24px;
+                                }
+
+                                .login-button.google i {
+                                    background-size: 100% 100%;
+                                    background: url(/static/img/google.svg) no-repeat center center;
+                                    background-size: contain;
+                                }
+
+                                .login-button.yandex i {
+                                    background-size: 100% 100%;
+                                    background: url(/static/img/yandex.svg) no-repeat center center;
+                                    background-size: contain;
+                                }
+
+                                .login-button.yandex {
+                                    background-color: #000;
+                                    color: #fff;
+                                }
+
+                                .login-button.vk {
+                                    background-color: #406792;
+                                    color: #fff;
+                                }
+
+                                .login-button svg {
+                                    width: 1.3em;
+                                    height: 1.3em;
+                                }
+
+                                .login-button.facebook {
+                                    background-color: #3b5998;
+                                    color: #fff;
+                                }
+                            </style>
+                            <div class="row" style="max-width: 500px; margin: 0 auto">
+
+
+                                <div class=" col-md-6" style="text-align: center; margin-bottom: 1rem;">
+                                    <a class="login-button yandex" href="/login/yandex-oauth2/?next="
+                                        style="background: black;">
+                                        <i></i> Yandex
+                                    </a>
+                                </div>
+
+
+
+
+                                <div class=" col-md-6" style="text-align: center; margin-bottom: 1rem;">
+                                    <a class="login-button vk" href="/login/vk-oauth2/?next=">
+                                        <svg>
+                                            <use xlink:href="/static/fa/icons.svg?v=9m#vk"></use>
+                                        </svg> Vkontakte
+                                    </a>
+                                </div>
+
+
+
+
+
+                            </div>
+
+
+
+
+                        </div>
+
+
+
+                        <div class="row" style="margin: 0 auto; max-width: 800px; ">
+
+                            <div style="text-align: center; margin-bottom: 2rem;">
+                                или
+                            </div>
+
+
+                            <div class=" col-sm-6" style="margin-bottom: 2rem;" >
+                                <form class="lr_form" style="margin-left: auto; margin-right: auto; height: 250px;"
+                                    action="/accounts/register/" method="post"><input type="hidden"
+                                        name="csrfmiddlewaretoken"
+                                        value="P3EgCjSbydHDrBhLLuwjO7HFUgyKfD7WVleiV4iqMHBl5P0rnjvbmYUEnjtUfQuE">
+                                    <div style="display:none"></div>
+                                    <h4 class="roboto">Регистрация через email</h4>
+
+                                    <label>Email</label>
+
+                                    <input type="email" name="email" placeholder="" class="form-control" required
+                                        id="id_email">
+
+                                    <br /><br />
+                                    <div  style="border: 1px solid #ccc; padding: 10px;">
+                                        <button class="btn btn-default">Зарегистрироваться</button>
+                                    </div>
+                                </form>
+                            </div>
+
+
+
+
+                            <div class=" col-sm-6">
+                                <form class="lr_form" style="margin-left: auto; margin-right: auto;"
+                                    action="/accounts/login/" method="post"><input type="hidden"
+                                        name="csrfmiddlewaretoken"
+                                        value="P3EgCjSbydHDrBhLLuwjO7HFUgyKfD7WVleiV4iqMHBl5P0rnjvbmYUEnjtUfQuE">
+                                    <h4 class="roboto">Войти через email</h4>
+                                    <label>Email</label>
+
+                                    <input type="email" name="email" placeholder="" class="form-control" required
+                                        id="id_email">
+
+                                    <label>Пароль</label>
+
+                                    <input type="password" name="password" autocomplete="current-password"
+                                        placeholder="" class="form-control" required id="id_password">
+
+                                    <a href="{% url 'regis' %}" class="pass-link">забыли пароль?</a>
+                                    <div style="margin-top: 1rem;">
+                                        <button class="btn btn-default"></button>
+                                        <a href="{% url 'cobinet' %}" style="text-decoration: none; color: #000;"><div 
+                                        style="     
+                                                    color: #000;
+                                                    text-decoration: none;
+                                                    border: 1px solid #ccc; padding: 10px;
+                                            
+                                            ">Войти через email</div></a>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <footer class="main" style="margin-top: 100px;" title="lc = ru langru=">
+        <div class="footer-top-area">
+            <div class="container">
+                <div class="row row-wrap">
+                    <div class=" col-md-3 hidden-xs">
+                        <a href="/" style="color: #ea9e2e; text-decoration: none;">
+                            Мир меропритий
+
+                        </a>
+                        <br>
+
+
+
+                        <br>
+
+                        <span class="white" style="color: #f5f5f5;">Админка, личный кабинет организатора</span>
+
+
+                    </div>
+                    <div class=" col-md-9">
+
+
+
+
+
+
+                        <p style="color: #f5f5f5;">
+                            Свяжитесь с нами, если у вас есть какие-то вопросы или предложения
+                            <br />
+
+                            <a href="#" style="border-bottom: 1px solid #fff; padding-bottom: 2px; margin-right: 2rem;"
+                                onclick="Chatra('openChat', true)">
+                                <svg>
+                                    <use xlink:href="/static/fa/icons.svg?v=9m#comments"></use>
+                                </svg>
+                                <!-- Онлайн чат -->
+                            </a>
+
+
+
+
+
+
+                        </p>
+
+                    </div>
+                    <div class=" col-md-4">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter42972689 = new Ya.Metrika2({
+                        id: 42972689,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true,
+                        webvisor: true
+                    });
+                } catch (e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks2");
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/42972689" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+
+
+
+
+
+
+    <!-- Chatra {literal} -->
+    <script>
+
+
+        (function (d, w, c) {
+            w.ChatraID = "dsyqNz5vb7zazvXn9";
+            var s = d.createElement('script');
+            w[c] = w[c] || function () {
+                (w[c].q = w[c].q || []).push(arguments);
+            };
+            s.async = true;
+            s.defer = true;
+            // s.src = 'https://call.chatra.io/chatra.js';
+            if (d.head) d.head.appendChild(s);
+        })(document, window, 'Chatra');
+
+
+
+    </script>
+    <!-- /Chatra {/literal} -->
+
+
+
+</body>
+
+</html>

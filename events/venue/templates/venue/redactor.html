@@ -1,0 +1,3264 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+
+<head>
+    <title>Личный кабинет организатора</title>
+    <meta name="description"
+        content="Личный кабинет позволяет организаторам мероприятий контролировать отображение их мероприятий в афише города." />
+
+    <meta name="google-site-verification" content="RHmwWct1bp0jtTDYLsCVuyoyI2a9TaDfMKmDqFpfq2g" />
+    <meta name='yandex-verification' content='68886b663015b804' />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="//127.0.0.1:8000/static/venue/img/oltin.jpg" />
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" />
+
+
+
+    <link rel="stylesheet" href="/static/css/style.css?v=59l" />
+
+    <style>
+        .btn {
+            font-size: 100%;
+        }
+
+        svg {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            display: inline-block;
+            opacity: 0.9;
+            margin-top: -3px;
+        }
+    </style>
+
+
+    <style>
+        .select2 {}
+
+        .select2-container--default .select2-results>.select2-results__options {
+            max-height: 400px;
+        }
+
+        .select2-container--default .select2-results>.select2-results__options {
+            font-size: 1.4rem;
+            line-height: 1.1rem;
+        }
+
+        .select2-results__option {
+            /* padding: 0; */
+        }
+
+        .select2-container--default .select2-results__group {
+            padding: 2px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            height: 30px;
+        }
+
+        .select2-container .select2-selection--single {
+            height: 30px;
+        }
+
+        .select2-results strong {
+            font-weight: bold;
+            padding: 5px 0;
+        }
+
+        body {
+            background: #fbfafa;
+        }
+
+        header.main,
+        footer.main {
+            background: #474747;
+        }
+
+        .highlight {
+            background: #f8f9de;
+            box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+        }
+
+        small {
+            display: inline-block;
+        }
+
+        .progress {
+            height: 20px;
+            width: 100%;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #345BA9;
+            width: 0%;
+            border-radius: 5px;
+            transition: width 2s ease-in-out;
+        }
+
+        .obj-links a {
+            margin-right: 15px;
+        }
+
+        .dropdown-menu {
+            min-width: 250px;
+        }
+
+
+        .event-image-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .active-event-image {
+            text-decoration: underline;
+            font-size: 110%;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .inactive-event-image {
+            color: #333;
+            width: 100%;
+            min-height: 200px;
+        }
+
+        .upload-image {
+            text-align: center;
+            margin: 30px;
+            font-size: 30px;
+            color: red;
+            text-decoration: underline;
+        }
+
+        .extra-photos {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+    </style>
+
+
+
+</head>
+
+
+<body>
+    <header class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-1 col-sm-4 col-lg-4" style="padding-right: 0; padding-top: 9px;">
+                    <a class="visible-xs-inline-block d-inline d-md-none" style="margin-top: 0px;" href="/">
+                        <svg>
+                            <use xlink:href="/static/fa/icons.svg?v=9m#map-marker"></use>
+                        </svg>
+                    </a>
+
+
+                    <a href="/" style="color: #e6a33e; text-decoration: none; " target="_blank"
+                        class="btn-top hidden-xs d-none d-md-inline" style="margin-right: 10px;"
+                        title="ГородЗовёт gorodzovet.ru">
+                        <svg>
+                            <use xlink:href="/static/fa/icons.svg?v=9m#map-marker"></use>
+                        </svg>
+                        Начало
+                    </a>
+                    <i class="fas fa-angle-right hidden-md hidden-sm hidden-xs d-none d-lg-inline"
+                        style="opacity: 0.5; color: #fff;"></i>
+
+                    <a href="/" style="margin-left: 40px; color: #e2ded8;"
+                        title="Кабинет организатора admin.gorodzovet.ru"
+                        class="hidden-sm hidden-xs d-none d-md-inline btn-top top-link-home" style="color: #fff;">
+                        Кабинет организатора
+                    </a>
+
+                </div>
+                <div class="col-11 col-sm-8 col-lg-8" style="text-align: right; padding-top: 5px; padding-left: 0;">
+
+
+
+
+                    <div class="dropdown btn-group">
+
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu5"
+                            data-bs-toggle="dropdown" data-toggle="dropdown" aria-expanded="false">
+                            <svg>
+                                <use xlink:href="/static/fa/icons.svg?v=9m#info-circle"></use>
+                            </svg>
+                            <span class="" style="color: #f5f5f5;">Поддержка</span>
+                            <span class="caret"></span>
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu5">
+                            <a class="dropdown-item" href="/ru/faq/"
+                                style="border-bottom: 1px solid #fff; padding-bottom: 2px;">
+                                <svg>
+                                    <use xlink:href="/static/fa/icons.svg?v=9m#info-circle"></use>
+                                </svg> Ответы на частые вопросы
+                            </a>
+                            <a class="dropdown-item" tabindex="-1" href="/terms/">
+                                <svg>
+                                    <use xlink:href="/static/fa/icons.svg?v=9m#list"></use>
+                                </svg> Правила
+                            </a>
+                            <a class="dropdown-item" href="#" onclick="Chatra('openChat', true)">
+                                <svg>
+                                    <use xlink:href="/static/fa/icons.svg?v=9m#comments"></use>
+                                </svg>
+                                Онлайн чат
+                            </a>
+                        </div>
+
+
+
+                    </div>
+
+
+<!--  zdes silka fobabit na opublikovanniy meropriyatie  -->
+
+                    <a href="/unfreeze/10221104/" class="show-loading btn btn-default">
+                        <i class="fas fa-check"></i> <span style="color: #f5f5f5;"
+                            class="hidden-xs d-none d-sm-inline">Публиковать</span>
+                    </a>
+
+
+
+                    <a class="btn btn-default block-loading"
+                        style="display: none; margin-left: 10px; margin-right: 10px;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        Пожалуйста, подождите... ...
+                    </a>
+
+                    <button class="btn btn-success show-loading show-save form-live-submit" id="form-live-submit">
+                        <i class="fas fa-save"></i> <a href="#"></a>Сохранить</a>
+                        
+                    </button>
+
+
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <style>
+        .subpanel {
+            background: #444;
+            padding: 10px 10px;
+            margin: -20px 0px 30px;
+            color: #fff;
+            font-size: 90%;
+        }
+
+        h1,
+        h1 input.form-control,
+        h1 textarea.form-control {
+            /* display: table-cell;
+			width: 100%; */
+            height: 50px;
+            font-size: 1.2em;
+            line-height: 1.4em;
+            font-weight: 400;
+            -webkit-font-smoothing: subpixel-antialiased;
+            -moz-osx-font-smoothing: auto;
+            margin: 0 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #2b2f33;
+            font-family: -apple-system, BlinkMacSystemFont, Roboto, Open Sans, Helvetica Neue, sans-serif;
+        }
+
+        @media (max-width: 767px) {
+
+            h1,
+            h1 input.form-control,
+            h1 textarea.form-control {
+                height: 100px;
+            }
+        }
+
+        .cart {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            background: inherit;
+            padding: 1.5rem;
+            border-radius: 4px;
+            box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+
+        }
+
+        @media (max-width: 767px) {
+            .cart {
+                padding: 1rem 0;
+                border: none;
+                box-shadow: none;
+            }
+        }
+
+        .extra-photo {
+            padding: 0.5rem;
+            background: #eee;
+        }
+
+        .extra-photo input {
+            font-size: 14px;
+            display: inline-block;
+            width: auto;
+        }
+
+        .extra-photo input[type=checkbox] {
+            margin-left: 1rem;
+            width: 15px;
+            height: 15px;
+            vertical-align: middle;
+        }
+
+        .sub {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd
+        }
+
+        .sub label {
+            text-transform: uppercase;
+            font-size: 90%;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub i {
+            margin-right: 5px;
+        }
+
+        .sub .btn {
+            background: #d7dfe5;
+            margin-top: 5px;
+            padding: 3px 5px;
+            font-size: 80%;
+        }
+
+        .sub select {
+            padding-left: 12px;
+        }
+
+        .sub option {
+            border-bottom: 1px solid #ddd;
+            padding: 5px 12px;
+            cursor: pointer;
+        }
+
+        .sub option:hover {
+            background: #ddd;
+        }
+
+        .inplace {
+            background: #eff7ff;
+            border: none;
+        }
+
+        .select2-results__option {
+            font-size: 1rem;
+            line-height: 0.8rem;
+        }
+
+        .autocomplete-suggestions {
+            border: 1px solid #999;
+            background: #FFF;
+            overflow: auto;
+            opacity: 1;
+            margin-top: 0px;
+        }
+
+        .autocomplete-suggestion {
+            padding: 2px 5px;
+            cursor: pointer;
+            border-bottom: 1px solid #ddd;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .autocomplete-selected {
+            background: #F0F0F0;
+        }
+
+        .autocomplete-suggestions strong {
+            font-weight: normal;
+            color: #3399FF;
+        }
+
+        .autocomplete-group {
+            padding: 2px 5px;
+        }
+
+        .autocomplete-group strong {
+            display: block;
+            border-bottom: 1px solid #000;
+        }
+
+        #show-performers span {
+            margin-right: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background: #ddd;
+            padding: 4px 10px;
+            font-size: 85%;
+            display: inline-block;
+            /* white-space: nowrap; */
+        }
+
+        #show-performers span i {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        form.popup {
+            display: none;
+        }
+
+        .popup label {
+            margin-top: 20px;
+            font-weight: bold;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .result {
+            margin: 10px 0;
+        }
+
+        .success {
+            border: 1px solid #6ec16e;
+            padding: 10px;
+            background: #dbf9db;
+        }
+
+        .upload {
+            opacity: 0.7;
+        }
+
+        .upload:hover,
+        .upload:active,
+        .dropzone:hover .upload {
+            opacity: 1;
+        }
+
+        img {
+            max-width: 100%;
+        }
+
+        .summernote-div {
+            width: 100%;
+        }
+
+        .seance {
+            position: relative;
+            background: #eaf5fc;
+            padding: 5px;
+            margin-left: -5px;
+        }
+
+        .seance input {
+            display: inline;
+            max-width: 120px;
+            width: auto;
+            margin-right: 1rem;
+            appearance: auto;
+        }
+
+        .remove-seance {
+            position: absolute;
+            top: 4px;
+            right: 10px;
+        }
+
+        #upload {
+            cursor: pointer;
+            float: right;
+            margin-bottom: 3rem;
+            background: #d9eff5;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            height: 200px;
+            width: 100%;
+            max-width: 250px;
+        }
+
+        #upload:hover,
+        #upload.active {
+            opacity: 0.8;
+        }
+    </style>
+
+
+
+
+    <div class="container" style="padding-top: 60px; min-height: 80vh;">
+
+        <style>
+            .subpanel {
+                background: #444;
+                padding: 10px 10px;
+                margin: -20px 0px 30px;
+                color: #fff;
+                font-size: 90%;
+            }
+
+            h1,
+            h1 input.form-control,
+            h1 textarea.form-control {
+                /* display: table-cell;
+			width: 100%; */
+                height: 50px;
+                font-size: 1.2em;
+                line-height: 1.4em;
+                font-weight: 400;
+                -webkit-font-smoothing: subpixel-antialiased;
+                -moz-osx-font-smoothing: auto;
+                margin: 0 0;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                color: #2b2f33;
+                font-family: -apple-system, BlinkMacSystemFont, Roboto, Open Sans, Helvetica Neue, sans-serif;
+            }
+
+            @media (max-width: 767px) {
+
+                h1,
+                h1 input.form-control,
+                h1 textarea.form-control {
+                    height: 100px;
+                }
+            }
+
+            .cart {
+                margin-top: 20px;
+                margin-bottom: 30px;
+                background: inherit;
+                padding: 1.5rem;
+                border-radius: 4px;
+                box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+
+            }
+
+            @media (max-width: 767px) {
+                .cart {
+                    padding: 1rem 0;
+                    border: none;
+                    box-shadow: none;
+                }
+            }
+
+            .extra-photo {
+                padding: 0.5rem;
+                background: #eee;
+            }
+
+            .extra-photo input {
+                font-size: 14px;
+                display: inline-block;
+                width: auto;
+            }
+
+            .extra-photo input[type=checkbox] {
+                margin-left: 1rem;
+                width: 15px;
+                height: 15px;
+                vertical-align: middle;
+            }
+
+            .sub {
+                margin-bottom: 10px;
+                padding: 10px;
+                border-bottom: 1px solid #ddd
+            }
+
+            .sub label {
+                text-transform: uppercase;
+                font-size: 90%;
+                font-weight: bold;
+                margin-bottom: 0.5rem;
+            }
+
+            .sub i {
+                margin-right: 5px;
+            }
+
+            .sub .btn {
+                background: #d7dfe5;
+                margin-top: 5px;
+                padding: 3px 5px;
+                font-size: 80%;
+            }
+
+            .sub select {
+                padding-left: 12px;
+            }
+
+            .sub option {
+                border-bottom: 1px solid #ddd;
+                padding: 5px 12px;
+                cursor: pointer;
+            }
+
+            .sub option:hover {
+                background: #ddd;
+            }
+
+            .inplace {
+                background: #eff7ff;
+                border: none;
+            }
+
+            .select2-results__option {
+                font-size: 1rem;
+                line-height: 0.8rem;
+            }
+
+            .autocomplete-suggestions {
+                border: 1px solid #999;
+                background: #FFF;
+                overflow: auto;
+                opacity: 1;
+                margin-top: 0px;
+            }
+
+            .autocomplete-suggestion {
+                padding: 2px 5px;
+                cursor: pointer;
+                border-bottom: 1px solid #ddd;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+            .autocomplete-selected {
+                background: #F0F0F0;
+            }
+
+            .autocomplete-suggestions strong {
+                font-weight: normal;
+                color: #3399FF;
+            }
+
+            .autocomplete-group {
+                padding: 2px 5px;
+            }
+
+            .autocomplete-group strong {
+                display: block;
+                border-bottom: 1px solid #000;
+            }
+
+            #show-performers span {
+                margin-right: 15px;
+                margin-bottom: 10px;
+                border-radius: 5px;
+                background: #ddd;
+                padding: 4px 10px;
+                font-size: 85%;
+                display: inline-block;
+                /* white-space: nowrap; */
+            }
+
+            #show-performers span i {
+                margin-left: 10px;
+                cursor: pointer;
+            }
+
+            form.popup {
+                display: none;
+            }
+
+            .popup label {
+                margin-top: 20px;
+                font-weight: bold;
+                display: block;
+                text-transform: uppercase;
+            }
+
+            .result {
+                margin: 10px 0;
+            }
+
+            .success {
+                border: 1px solid #6ec16e;
+                padding: 10px;
+                background: #dbf9db;
+            }
+
+            .upload {
+                opacity: 0.7;
+            }
+
+            .upload:hover,
+            .upload:active,
+            .dropzone:hover .upload {
+                opacity: 1;
+            }
+
+            img {
+                max-width: 100%;
+            }
+
+            .summernote-div {
+                width: 100%;
+            }
+
+            .seance {
+                position: relative;
+                background: #eaf5fc;
+                padding: 5px;
+                margin-left: -5px;
+            }
+
+            .seance input {
+                display: inline;
+                max-width: 120px;
+                width: auto;
+                margin-right: 1rem;
+                appearance: auto;
+            }
+
+            .remove-seance {
+                position: absolute;
+                top: 4px;
+                right: 10px;
+            }
+
+            #upload {
+                cursor: pointer;
+                float: right;
+                margin-bottom: 3rem;
+                background: #d9eff5;
+                border-radius: 5px;
+                border: 1px solid #ccc;
+                height: 200px;
+                width: 100%;
+                max-width: 250px;
+            }
+
+            #upload:hover,
+            #upload.active {
+                opacity: 0.8;
+            }
+        </style>
+
+
+
+
+
+
+        <div class="cart">
+            <div class="row" style="min-height: 230px">
+                <div class="col-12 col-md-3 col-md-push-9 order-md-1" style="min-height: 245px;">
+                    
+                    <!-- <picture>
+                        <source media="(max-width: 600px)"
+                            srcset=https://static.gorodzovet.ru/uploads/2023/4/27/photo200-9235570.webp?v=032024
+                            type=image/webp>
+                        <source media="(max-width: 3000px)"
+                            srcset=https://static.gorodzovet.ru/uploads/2023/4/27/photo400-9235570.webp?v=032024
+                            type=image/webp>
+                        <source
+                            srcset=https://static.gorodzovet.ru/uploads/2023/4/27/photo600-9235570.webp?v=032024
+                            type=image/webp><img alt="Любовь людей" loading=lazy
+                            src=https://static.gorodzovet.ru/uploads/2023/4/27/photo600-9235570.jpg?v=032024>
+                    </picture> -->
+
+                    <div id="upload" style="padding: 35% 5% 5% 5%; text-align: center; 
+						background-image: url(/static/img/uploadimage.png); border: 1px dashed #666; background-size: 80px;
+						background-repeat: no-repeat; background-position: top; ">
+                        <div id="upload-hint" style="font-size: 1rem;">
+
+                            Загрузите основную картинку
+                            <br>
+
+                            <span class="btn btn-default btn-sm">
+                                <i class="fas fa-upload"></i>
+                                Загрузить
+                            </span>
+                            
+                        </div>
+                    </div>
+                    <input type="file" id="avatar_file"
+                        accept="image/jpeg, image/png, image/gif, image/webp, image/tiff" hidden style="display: none;">
+
+
+                    <script>
+                        $('#upload').on('click', function () {
+                            $('#avatar_file').click();
+                        });
+
+                        $('#avatar_file').on('change', function (e) {
+                            const file = e.target.files[0];
+                            const formData = new FormData();
+                            formData.append('avatar_file', file);
+
+                            $.ajax({
+                                url: '/ajax/save/avatar/10221104/',
+                                type: 'POST',
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                success: function (data) {
+                                    console.log(data);
+                                    var imageUrl = data.result;
+                                    console.log(imageUrl);
+                                    $('#upload').css('background-size', 'cover').css('background-image', 'url(' + imageUrl + ')').html('');
+                                },
+                                error: function (jqXHR, textStatus, errorThrown) {
+                                    console.error('File upload failed:', textStatus, errorThrown);
+                                }
+                            });
+                        });
+                    </script>
+
+
+
+                    <form method="post" id="form-live" enctype="multipart/form-data"><input type="hidden"
+                            name="csrfmiddlewaretoken"
+                            value="Cj1M0Kac2nS6qX5IIaYPrf3GcRBMmheEeI8abXFwKbnhVMz7TldDQLBdiQAyq9pP">
+
+
+                        <div class="sub" style="margin: 0 0 20px; padding: 0; border: none;">
+
+                            <label style="display: block; margin: 0 0 0.5rem; clear: both;">
+                                <i class="fas fa-image"></i>
+                                Дополнительные фото:
+                            </label>
+
+
+                            <div style="font-size: 80%">
+                                <div class="extra-photo mb-2">
+
+
+                                    <input type="file" name="extra_photo1" accept="image/*"
+                                        class="form-control-file monitor-change" id="id_extra_photo1">
+                                </div>
+
+
+                                <div class="extra-photo mb-2">
+
+
+
+
+
+                                    <div style="display: block; margin: 1rem 0 0;">
+                                        <i class="fas fa-tag" style="margin-right: 0;"></i>
+                                        <a style=" text-decoration: underline; cursor: pointer;"
+                                            onclick="alert(`Эта опция только для платных анонсов. Сохраните анонс и выберите вариант платного размещения.`);">
+                                            больше возможностей
+                                        </a>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                            <script>
+                                ['avatar_file', '#id_extra_photo1',].forEach(selector => {
+                                    const element = document.querySelector(selector);
+                                    if (element) {
+                                        element.addEventListener('change', function () {
+                                            var fileSize = this.files[0].size / 1024 / 1024; // size in MB
+                                            if (fileSize > 5) {
+                                                alert('File size exceeds 5 MB');
+                                                this.value = '';
+                                            }
+                                        });
+                                    }
+                                });
+                            </script>
+
+
+
+                        </div>
+
+
+                </div>
+
+
+
+                <div class="col-12 col-md-9 col-md-pull-3" style="">
+
+
+
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="sub" style="border:none">
+                                <div id="startings">
+
+                                    <div id="starting">
+                                        <a href="/removeseance/" class="remove-seance"
+                                            style="display: none; position: absolute; top: 10px; right: 10px;">
+                                            <i class="fas fa-times"></i>
+                                        </a>
+                                        <label>
+                                            <i class="fas fa-calendar"></i>
+                                            Дата и время начала
+                                        </label>
+
+
+
+                                        <div class="seance">
+                                            <input type="text" name="date_start"
+                                                class="form-control date monitor-change" id="id_date_start">
+
+                                            <input type="time" name="time_start"
+                                                class="form-control timepicker monitor-change" style="max-width: 100px"
+                                                id="id_time_start">
+
+
+                                        </div>
+
+
+                                        <link rel="stylesheet" href="/static/css/vanillajs.css">
+                                        <script
+                                            src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.1/dist/js/datepicker-full.min.js"></script>
+                                        <script
+                                            src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.3.1/dist/js/locales/ru.js"></script>
+                                        <style>
+                                            button {
+                                                border: none;
+                                            }
+                                        </style>
+                                        <script>
+
+                                            function initDatepicker(el) {
+                                                //console.log(el);
+                                                //let d = el.value;
+                                                //let [day, month, year] = d.split('.');
+                                                //let dateValue = new Date(year, month - 1, day); // month is 0-indexed
+
+                                                // let datepicker = new Datepicker(el, {
+                                                //     format: 'dd.mm.yyyy',
+                                                //     language: 'ru',
+                                                //     minDate: '29-04-2024',
+                                                //     autohide: true,
+                                                // });
+                                            }
+
+                                            $(document).ready(function () {
+                                                const datepickers = document.querySelectorAll('.date');
+                                                datepickers.forEach(initDatepicker);
+                                            });
+
+                                            function createDynamicDatepicker(e) {
+                                                if (!e.target.classList.contains('dynamicDatepicker')) return;
+                                                initDatepicker(e.target);
+                                                e.target.removeEventListener('focus', createDynamicDatepicker);
+                                            }
+
+                                            document.body.addEventListener('focus', createDynamicDatepicker, true);
+                                        </script>
+
+                                    </div>
+                                </div>
+
+
+                                <div id="seances">
+
+                                </div>
+                                <span id="add_seance" class="btn btn-default" data="0">Добавить ещё дату начала</span>
+                                <br>
+
+
+                                <a class="link"
+                                    style="font-size: 80%; margin-top: 0.8rem; display: inline-block; text-decoration: underline;"
+                                    onclick="alert(`Эта опция только для платных анонсов.
+Сохраните анонс и выберите вариант платного размещения.`);">Указать дату окончания</a>
+
+
+
+
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="sub" style="border: none">
+                                <div style="margin-bottom: 2rem; ">
+                                    <label>
+                                        <i class="fas fa-map-marker"></i>
+                                        Город
+                                    </label>
+                                    <select name="city" class="form-control monitor-change" required id="id_city">
+                                        <option value="" selected>---------</option>
+
+                                        <option value="507">Абакан</option>
+
+                                        <option value="23628">Алматы</option>
+
+                                        <option value="114">Анапа</option>
+
+                                        <option value="472">Ангарск</option>
+
+                                        <option value="91">Архангельск</option>
+
+                                        <option value="23714">Астана</option>
+
+                                        <option value="541">Астрахань</option>
+
+                                        <option value="24006">Байкал</option>
+
+                                        <option value="23707">Баку</option>
+
+                                        <option value="13">Балашиха</option>
+
+                                        <option value="339">Барнаул</option>
+
+                                        <option value="24849">Батуми</option>
+
+                                        <option value="336">Белгород</option>
+
+                                        <option value="23660">Белград</option>
+
+                                        <option value="942">Бийск</option>
+
+                                        <option value="23643">Бишкек</option>
+
+                                        <option value="1148">Благовещенск</option>
+
+                                        <option value="23960">Братск</option>
+
+                                        <option value="415">Брянск</option>
+
+                                        <option value="59">Великий Новгород</option>
+
+                                        <option value="236">Владивосток</option>
+
+                                        <option value="930">Владикавказ</option>
+
+                                        <option value="77">Владимир</option>
+
+                                        <option value="90">Волгоград</option>
+
+                                        <option value="897">Волжский</option>
+
+                                        <option value="1">Вологда</option>
+
+                                        <option value="156">Воронеж</option>
+
+                                        <option value="173">Выборг</option>
+
+                                        <option value="23573">Геленджик</option>
+
+                                        <option value="23580">Горно-Алтайск</option>
+
+                                        <option value="23674">Грозный</option>
+
+                                        <option value="1236">Дербент</option>
+
+                                        <option value="462">Дзержинск</option>
+
+                                        <option value="408">Евпатория</option>
+
+                                        <option value="24">Екатеринбург</option>
+
+                                        <option value="23589">Ереван</option>
+
+                                        <option value="892">Ессентуки</option>
+
+                                        <option value="614">Жуковский</option>
+
+                                        <option value="23584">Зеленоград</option>
+
+                                        <option value="127">Иваново</option>
+
+                                        <option value="194">Ижевск</option>
+
+                                        <option value="265">Иркутск</option>
+
+                                        <option value="104">Йошкар-Ола</option>
+
+                                        <option value="48">Казань</option>
+
+                                        <option value="42">Калининград</option>
+
+                                        <option value="125">Калуга</option>
+
+                                        <option value="880">Каменск-Уральский</option>
+
+                                        <option value="330">Кемерово</option>
+
+                                        <option value="510">Керчь</option>
+
+                                        <option value="159">Киров</option>
+
+                                        <option value="389">Кисловодск</option>
+
+                                        <option value="1054">Клин</option>
+
+                                        <option value="1424">Ковров</option>
+
+                                        <option value="253">Коломна</option>
+
+                                        <option value="924">Комсомольск-на-Амуре</option>
+
+                                        <option value="78">Королёв</option>
+
+                                        <option value="71">Кострома</option>
+
+                                        <option value="979">Красногорск</option>
+
+                                        <option value="69">Краснодар</option>
+
+                                        <option value="147">Красноярск</option>
+
+                                        <option value="23663">Кронштадт</option>
+
+                                        <option value="949">Курган</option>
+
+                                        <option value="390">Курск</option>
+
+                                        <option value="16">Липецк</option>
+
+                                        <option value="1263">Лобня</option>
+
+                                        <option value="300">Люберцы</option>
+
+                                        <option value="710">Магадан</option>
+
+                                        <option value="92">Магнитогорск</option>
+
+                                        <option value="863">Махачкала</option>
+
+                                        <option value="899">Миасс</option>
+
+                                        <option value="489">Минеральные Воды</option>
+
+                                        <option value="5">Москва</option>
+
+                                        <option value="33">Мурманск</option>
+
+                                        <option value="982">Мытищи</option>
+
+                                        <option value="291">Набережные Челны</option>
+
+                                        <option value="23662">Нальчик</option>
+
+                                        <option value="400">Нефтекамск</option>
+
+                                        <option value="952">Нефтеюганск</option>
+
+                                        <option value="28">Нижневартовск</option>
+
+                                        <option value="23578">Нижнекамск</option>
+
+                                        <option value="23">Нижний Новгород</option>
+
+                                        <option value="334">Нижний Тагил</option>
+
+                                        <option value="413">Новокузнецк</option>
+
+                                        <option value="23576">Новомосковск</option>
+
+                                        <option value="164">Новороссийск</option>
+
+                                        <option value="213">Новосибирск</option>
+
+                                        <option value="466">Новочебоксарск</option>
+
+                                        <option value="23688">Ногинск</option>
+
+                                        <option value="294">Норильск</option>
+
+                                        <option value="883">Обнинск</option>
+
+                                        <option value="644">Одинцово</option>
+
+                                        <option value="366">Омск</option>
+
+                                        <option value="23581">Онлайн</option>
+
+                                        <option value="216">Орёл</option>
+
+                                        <option value="39">Оренбург</option>
+
+                                        <option value="23762">Орехово-Зуево</option>
+
+                                        <option value="26">Пенза</option>
+
+                                        <option value="38">Пермь</option>
+
+                                        <option value="87">Петрозаводск</option>
+
+                                        <option value="545">Петропавловск-Камчатский</option>
+
+                                        <option value="307">Подольск</option>
+
+                                        <option value="1122">Прокопьевск</option>
+
+                                        <option value="377">Псков</option>
+
+                                        <option value="459">Пятигорск</option>
+
+                                        <option value="10">Ростов-на-Дону</option>
+
+                                        <option value="7">Рыбинск</option>
+
+                                        <option value="89">Рязань</option>
+
+                                        <option value="55">Самара</option>
+
+                                        <option value="2">Санкт-Петербург</option>
+
+                                        <option value="140">Саранск</option>
+
+                                        <option value="276">Саратов</option>
+
+                                        <option value="54">Севастополь</option>
+
+                                        <option value="57">Северодвинск</option>
+
+                                        <option value="438">Сергиев Посад</option>
+
+                                        <option value="927">Серпухов</option>
+
+                                        <option value="289">Симферополь</option>
+
+                                        <option value="281">Смоленск</option>
+
+                                        <option value="133">Сочи</option>
+
+                                        <option value="130">Ставрополь</option>
+
+                                        <option value="23696">Стамбул</option>
+
+                                        <option value="240">Старый Оскол</option>
+
+                                        <option value="478">Стерлитамак</option>
+
+                                        <option value="552">Сургут</option>
+
+                                        <option value="873">Сызрань</option>
+
+                                        <option value="122">Сыктывкар</option>
+
+                                        <option value="423">Таганрог</option>
+
+                                        <option value="103">Тамбов</option>
+
+                                        <option value="23610">Тбилиси</option>
+
+                                        <option value="318">Тверь</option>
+
+                                        <option value="88">Тольятти</option>
+
+                                        <option value="120">Томск</option>
+
+                                        <option value="1210">Туапсе</option>
+
+                                        <option value="35">Тула</option>
+
+                                        <option value="245">Тюмень</option>
+
+                                        <option value="359">Улан-Удэ</option>
+
+                                        <option value="8">Ульяновск</option>
+
+                                        <option value="241">Уфа</option>
+
+                                        <option value="41">Хабаровск</option>
+
+                                        <option value="471">Ханты-Мансийск</option>
+
+                                        <option value="46">Чебоксары</option>
+
+                                        <option value="99">Челябинск</option>
+
+                                        <option value="9">Череповец</option>
+
+                                        <option value="358">Черкесск</option>
+
+                                        <option value="887">Чехов</option>
+
+                                        <option value="833">Чита</option>
+
+                                        <option value="1018">Шерегеш</option>
+
+                                        <option value="106">Электросталь</option>
+
+                                        <option value="23613">Элиста</option>
+
+                                        <option value="539">Энгельс</option>
+
+                                        <option value="643">Южно-Сахалинск</option>
+
+                                        <option value="409">Якутск</option>
+
+                                        <option value="7729">Ялта</option>
+
+                                        <option value="3">Ярославль</option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <label style="height: 20px; overflow: hidden;">
+                                    <i class="fas fa-building"></i>
+                                    Место проведения
+
+                                    <span id="place-top-hint"
+                                        style="font-size: 70%; max-height: 20px; overflow: hidden;">
+
+
+                                        <span class="admin-hint" id="online_hint"
+                                            style="cursor: pointer; margin-left: 1rem; font-size: 120%; border-bottom: 1px dashed #027798;"
+                                            onclick='handleOnlineClick();'>
+                                            Онлайн?
+                                        </span>
+                                        <script>
+                                            function handleOnlineClick() {
+                                                if (!confirm(`Вы уверены? \nТочно хотите установить место проведения и город Онлайн? Потом вы не сможете поменять город.`)) {
+                                                    return;
+                                                }
+
+                                                $("#id_places").val(3174902);
+                                                $("#place-top-hint").hide();
+                                                $("#show-place").html("Онлайн");
+                                                $("#autocomplete-place").hide();
+                                                $("#place-admin-hint").hide();
+                                            }
+                                        </script>
+
+
+
+                                        <span class="green" id="set_city" style="display: none;">
+                                            Укажите город
+                                        </span>
+
+                                        <span class="green" id="looking_for_places" style="display: none;">
+                                            <i class="fas fa-circle-o-notch fa-spin fa-1x fa-fw"
+                                                style="margin: 0 0 0 10px"></i>
+                                            Ищем место ...
+                                        </span>
+                                        <span class="green" id="select_place" style="display: none;">
+                                            Выберите место из списка
+                                        </span>
+                                        <span class="green" id="place_selected" style="display: none;">
+                                            Место выбрано
+                                        </span>
+                                        <span class="red" id="no_place_found" style="display: none;">
+                                            Место не найдено :(
+                                        </span>
+                                    </span>
+                                </label>
+
+
+                                <div id="show-place">
+
+                                </div>
+
+
+
+
+                                <input type="text" id="id_places" name="place" style="display: none" />
+
+
+                                <input type="text" id="autocomplete-place" class="autocomplete form-control"
+                                    date-object-type="place"
+                                    placeholder="Начните набирать название площадки и выберите из списка" />
+
+                                <div class="admin-hint" id="place-admin-hint" style="font-size: 80%; margin: 10px 0">
+
+                                    Начните вводить название заведения, затем выберите его из списка.
+                                    <br>
+                                    Если нужного вам заведения нет, пожалуйста, добавьте новое.
+
+                                    <br>
+                                    <a href="/place/add/" target="_blank" style="text-decoration: underline;">добавить
+                                        новое место</a>
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="sub" style="border: none; margin-bottom: 0; padding: 0">
+                        <label>
+                            Название
+                        </label>
+                        <h1>
+                            <textarea name="name" cols="40" rows="10" maxlength="100" placeholder=""
+                                style="margin-left:0;" class="form-control monitor-change" id="id_name">
+</textarea>
+                        </h1>
+
+                        <div class="admin-hint">
+                            Пример: Грин Фест. Уберите из заголовка даты, название города и название заведения. Уберите
+                            лишний капс (не надо все писать заглавными буквами)
+                            <br>Оставьте только название мероприятия без лишних кавычек и точек.
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="cart">
+            <div class="row" style="min-height: 300px">
+                <div class="col-12 col-md-9 sub" style="padding-right: 2rem;">
+                    <label>
+                        Краткое описание
+                    </label>
+
+
+
+                    <input type="text" name="short_description" maxlength="255" class="form-control"
+                        id="id_short_description">
+
+
+                    <div class="admin-hint">
+                        Для списка мероприятий. До 120 символов, должны поместиться в этом поле.
+                    </div>
+
+                    <div class="admin-hint">
+                        Например: Большой фестиваль еды, где вы можете бесплатно попробовать много разных блюд
+                    </div>
+                    <div class="admin-hint">
+                        Не дублируйте здесь даты, город, место проведения или название мероприятия. Кратко поясните, что
+                        это за мероприятие.
+                    </div>
+
+                    <br><br>
+
+                    <label>
+                        Описание
+                    </label>
+                    <div class="admin-hint">
+                        Постарайтесь указать подробное описание. Чем подробнее, тем лучше.
+                        <br>Что это за мероприятие? Чего стоит ожидать? Кто может прийти? Что взять с собой и как
+                        одеться? Какие отзывы с предыдущих мероприятий?
+                        <br>Отформатируйте текст красиво - разбейте на абзацы, выделите подзаголовки жирным шрифтом,
+                        уберите хэштеги.
+                        <br><br>
+                    </div>
+
+
+                    <div id="description" style="">
+                        <textarea name="description" cols="40" rows="10" id="id_description">
+</textarea>
+
+
+
+
+                        <script src="/static/js/ckeditor.js?v=3"></script>
+
+                        <script src="https://cdn.ckeditor.com/ckeditor5/36.0.1/classic/translations/ru.js"></script>
+                        <style>
+                            .ck-editor__editable,
+                            .ck-editor__editable_inline {
+                                min-height: 400px !important;
+                            }
+
+                            .ck-editor__editable ul li {
+                                list-style-type: disc;
+                                margin-left: 17px;
+                            }
+
+                            #description {
+                                position: relative;
+                            }
+
+                            .more-options-button {
+                                position: absolute;
+                                top: 10px;
+                                right: 10px;
+                                z-index: 10;
+                                text-decoration: underline;
+                                color: #666;
+                                font-size: 80%;
+                            }
+
+                            @media (max-width: 767px) {
+                                .more-options-button {
+                                    top: auto;
+                                    bottom: 5px;
+                                }
+                            }
+                        </style>
+
+                        <script>
+                            ClassicEditor
+                                .create(document.querySelector('#id_description'), {
+                                    plugins: [
+                                        'Essentials', 'Bold', 'Italic', 'Paragraph', 'Heading', 'List',
+                                        'Table', 'TableToolbar',
+                                        'BlockQuote'
+                                    ],
+                                    toolbar: {
+
+                                        items: [
+                                            'bold', 'italic', 'heading', '|', 'bulletedList', 'numberedList', '|',
+                                            '|',
+                                            'undo', 'redo',
+                                        ]
+
+                                    },
+
+                                    heading: {
+                                        options: [
+                                            { model: 'paragraph', title: 'Обычный текст', class: 'ck-heading_paragraph' },
+                                        ]
+                                    },
+
+                                    pastePlainText: {
+                                        pasteValue: 'text'
+                                    },
+                                    height: 400,
+                                    language: 'ru',
+                                    placeholder: 'Напишите описание здесь...',
+                                })
+                                .then(editor => {
+                                    editor.ui.view.editable.element.style.backgroundColor = '#fff';
+                                    editor.ui.view.editable.element.classList.add('content');
+                                    editor.ui.view.editable.element.ownerDocument.head.insertAdjacentHTML('beforeend',
+                                        '<link rel="stylesheet" href="https://gorodzovet.ru/static/css/mo.min.css?v=7" type="text/css">');
+                                    editor.ui.view.editable.element.ownerDocument.head.insertAdjacentHTML('beforeend',
+                                        '<style>:root, html { font-size: 16px; }</style>');
+                                })
+                                .catch(error => {
+                                    console.error(error);
+                                });
+                        </script>
+
+
+                        <a href="/up/10221104/" target="_blank" class="more-options-button">
+                            больше возможностей
+                        </a>
+
+
+                    </div>
+
+
+
+
+
+
+                    <div class="sub" style="margin-top: 2rem; padding-left: 0; padding-right: 0;">
+                        <label>
+                            <i class="fas fa-external-link"></i>
+                            ССЫЛКА ПОСЛЕ ОПИСАНИЯ
+                        </label>
+
+                        <input type="url" name="source_url" maxlength="255" class="form-control" id="id_source_url">
+                        <div class="admin-hint">
+                            Отобразится на странице мероприятия после описания.
+                            <br>
+                            Можете разместить ссылку на свой сайт или группу в соцсетях.
+
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="sub" style="padding-left: 0; padding-right: 0;">
+                        <label>
+                            <i class="fas fa-film"></i>
+                            ССЫЛКА НА ВИДЕО
+                        </label>
+
+                        <input type="text" name="video_url" maxlength="255" class="form-control" id="id_video_url">
+                        <div class="admin-hint">
+                            Отобразится на странице мероприятия после описания.
+                            <br>
+                            Можете разместить ссылку на файл видео в youtube или вконтакте.
+                        </div>
+                        <div class="admin-hint">
+                            Например: http://www.youtube.com/watch?v=ScMzIvxBSi4 или https://youtu.be/v6ROmGlv_VI
+                            <br>
+                        </div>
+
+                        <div class="admin-hint">
+                            Пример для вконтакте: //vk.com/video_ext.php?oid=-15628&id=4562&hash=1b98&hd=2
+                            <br>Чтобы получить такую ссылку, откройте ваше видео в ВК, нажмите
+                            Поделиться->Экспортировать и скопируйте ссылку из кода iframe, из поля src="... вот тут
+                            нужная ссылка ...".
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="sub" style="padding-left: 0; padding-right: 0;">
+                        <label>
+                            <i class="fas fa-external-link"></i>
+                            Ссылка на регистрацию/покупку билетов
+                        </label>
+                        <br>
+                        <div class="form-control" onclick="alert(`Эта опция только для платных анонсов.
+Сохраните анонс и выберите вариант платного размещения.`);">&nbsp;</div>
+                        <div class="admin-hint">Эта опция только для платных анонсов.
+                            Сохраните анонс и выберите вариант платного размещения.</div>
+                    </div>
+
+
+
+
+                </div>
+
+
+
+
+
+                <div class="col-12 col-md-3 col-md-offset-0" style="">
+                    <div class="subs" style="background: #eee; float: right">
+
+
+                        <div class="sub">
+                            <label>
+                                <i class="fas fa-tag"></i>
+                                Тип мероприятия
+                            </label>
+                            <br>
+
+                            основной (обязательно):
+                            <br>
+
+                            <select name="tag1" class="form-control select2" required id="id_tag1">
+                                <option value="" selected></option>
+
+                                <option value="244">IT и технологии</option>
+
+                                <option value="85">Активный отдых</option>
+
+                                <option value="259">Бесплатные мероприятия</option>
+
+                                <option value="18">Бизнес и карьера</option>
+
+                                <option value="122">Встречи, общение</option>
+
+                                <option value="183">Детская афиша</option>
+
+                                <option value="17">Здоровье и спорт</option>
+
+                                <option value="87">Клубы, ночная жизнь</option>
+
+                                <option value="231">Красота, мода</option>
+
+                                <option value="16">Культура и искусство</option>
+
+                                <option value="56">Музыка</option>
+
+                                <option value="115">Образ жизни</option>
+
+                                <option value="19">Обучение и образование</option>
+
+                                <option value="264">Общество</option>
+
+                                <option value="229">Онлайн мероприятия</option>
+
+                                <option value="210">Психология и эзотерика</option>
+
+                                <option value="211">Шоу и концерты</option>
+
+                            </select>
+
+                            дополнительный:
+                            <br>
+
+                            <select name="tag2" class="form-control select2" required id="id_tag2">
+                                <option value="" selected></option>
+
+                                <optgroup label="Культура и искусство">
+                                    <option value="15">Театр</option>
+
+                                </optgroup>
+                                <optgroup label="Бизнес и карьера">
+                                    <option value="25">Форум, конференция</option>
+
+                                    <option value="26">Бизнес-семинар</option>
+
+                                    <option value="27">Бизнес-тренинг</option>
+
+                                </optgroup>
+                                <optgroup label="Здоровье и спорт">
+                                    <option value="29">Футбол</option>
+
+                                    <option value="30">Хоккей</option>
+
+                                    <option value="31">Велоспорт</option>
+
+                                    <option value="32">Бег</option>
+
+                                    <option value="34">Йога</option>
+
+                                    <option value="36">Фитнес</option>
+
+                                    <option value="40">Баскетбол</option>
+
+                                    <option value="41">Волейбол</option>
+
+                                    <option value="44">Теннис</option>
+
+                                    <option value="46">Лыжи</option>
+
+                                    <option value="47">Коньки</option>
+
+                                    <option value="49">Workout</option>
+
+                                </optgroup>
+                                <optgroup label="Музыка">
+                                    <option value="57">Классическая музыка</option>
+
+                                    <option value="58">Рок музыка</option>
+
+                                    <option value="59">Рэп музыка</option>
+
+                                    <option value="60">Поп музыка</option>
+
+                                    <option value="62">Блюз музыка</option>
+
+                                    <option value="63">Джаз музыка</option>
+
+                                </optgroup>
+                                <optgroup label="Шоу и концерты">
+                                    <option value="66">Стендап</option>
+
+                                </optgroup>
+                                <optgroup label="Обучение и образование">
+                                    <option value="67">Мастер-класс</option>
+
+                                    <option value="78">Мастер-класс по фото/видео</option>
+
+                                    <option value="82">Кулинарный мастер-класс</option>
+
+                                </optgroup>
+                                <optgroup label="Шоу и концерты">
+                                    <option value="84">Ярмарка</option>
+
+                                </optgroup>
+                                <optgroup label="Активный отдых">
+                                    <option value="86">Путешествия</option>
+
+                                </optgroup>
+                                <optgroup label="Бизнес и карьера">
+                                    <option value="92">Бизнес встреча</option>
+
+                                </optgroup>
+                                <optgroup label="Шоу и концерты">
+                                    <option value="96">Фестиваль</option>
+
+                                    <option value="98">Цирк</option>
+
+                                </optgroup>
+                                <optgroup label="Культура и искусство">
+                                    <option value="100">Опера</option>
+
+                                    <option value="101">Мюзикл</option>
+
+                                </optgroup>
+                                <optgroup label="Образ жизни">
+                                    <option value="108">Экскурсии</option>
+
+                                </optgroup>
+                                <optgroup label="Психология и эзотерика">
+                                    <option value="111">Психологический тренинг</option>
+
+                                </optgroup>
+                                <optgroup label="Музыка">
+                                    <option value="112">Электронная музыка</option>
+
+                                </optgroup>
+                                <optgroup label="Образ жизни">
+                                    <option value="117">Еда и напитки</option>
+
+                                </optgroup>
+                                <optgroup label="Культура и искусство">
+                                    <option value="119">Выставки</option>
+
+                                </optgroup>
+                                <optgroup label="Активный отдых">
+                                    <option value="120">Автобусный тур</option>
+
+                                </optgroup>
+                                <optgroup label="Музыка">
+                                    <option value="121">Концерты</option>
+
+                                </optgroup>
+                                <optgroup label="Встречи, общение">
+                                    <option value="123">Встреча / общение</option>
+
+                                </optgroup>
+                                <optgroup label="Образ жизни">
+                                    <option value="136">Воспитание</option>
+
+                                </optgroup>
+                                <optgroup label="Обучение и образование">
+                                    <option value="139">Семинары</option>
+
+                                </optgroup>
+                                <optgroup label="Образ жизни">
+                                    <option value="140">Квиз</option>
+
+                                    <option value="142">Фотосессия</option>
+
+                                </optgroup>
+                                <optgroup label="Шоу и концерты">
+                                    <option value="151">Кино</option>
+
+                                </optgroup>
+                                <optgroup label="Образ жизни">
+                                    <option value="152">Дом, дизайн</option>
+
+                                    <option value="153">Собаки</option>
+
+                                </optgroup>
+                                <optgroup label="Обучение и образование">
+                                    <option value="154">Женский тренинг</option>
+
+                                </optgroup>
+                                <optgroup label="Здоровье и спорт">
+                                    <option value="156">ЗОЖ</option>
+
+                                </optgroup>
+                                <optgroup label="Образ жизни">
+                                    <option value="159">Настольные игры</option>
+
+                                    <option value="160">Животные</option>
+
+                                </optgroup>
+                                <optgroup label="Здоровье и спорт">
+                                    <option value="161">Спорт</option>
+
+                                </optgroup>
+                                <optgroup label="Культура и искусство">
+                                    <option value="163">Творчество</option>
+
+                                </optgroup>
+                                <optgroup label="Обучение и образование">
+                                    <option value="164">Иностранные языки</option>
+
+                                    <option value="168">Мужской тренинг</option>
+
+                                </optgroup>
+                                <optgroup label="Здоровье и спорт">
+                                    <option value="169">Боевые искусства</option>
+
+                                </optgroup>
+                                <optgroup label="Обучение и образование">
+                                    <option value="171">Лекции</option>
+
+                                </optgroup>
+                                <optgroup label="Музыка">
+                                    <option value="173">Караоке</option>
+
+                                </optgroup>
+                                <optgroup label="Активный отдых">
+                                    <option value="174">Квест</option>
+
+                                </optgroup>
+                                <optgroup label="Обучение и образование">
+                                    <option value="179">Научные мероприятия</option>
+
+                                </optgroup>
+                                <optgroup label="Бизнес и карьера">
+                                    <option value="180">Бизнес</option>
+
+                                </optgroup>
+                                <optgroup label="Красота, мода">
+                                    <option value="182">Красота</option>
+
+                                </optgroup>
+                                <optgroup label="Здоровье и спорт">
+                                    <option value="184">Киберспорт</option>
+
+                                </optgroup>
+                                <optgroup label="Психология и эзотерика">
+                                    <option value="186">Дыхательные практики</option>
+
+                                </optgroup>
+                                <optgroup label="Культура и искусство">
+                                    <option value="188">Балет</option>
+
+                                </optgroup>
+                                <optgroup label="Образ жизни">
+                                    <option value="190">Экология</option>
+
+                                </optgroup>
+                                <optgroup label="Активный отдых">
+                                    <option value="191">Лагерь</option>
+
+                                </optgroup>
+                                <optgroup label="Обучение и образование">
+                                    <option value="192">Творческий мастер-класс</option>
+
+                                </optgroup>
+                                <optgroup label="Встречи, общение">
+                                    <option value="193">Аниме</option>
+
+                                </optgroup>
+                                <optgroup label="Психология и эзотерика">
+                                    <option value="194">Телесные практики</option>
+
+                                </optgroup>
+                                <optgroup label="Активный отдых">
+                                    <option value="195">Альпинизм</option>
+
+                                </optgroup>
+                                <optgroup label="Культура и искусство">
+                                    <option value="197">Литература</option>
+
+                                    <option value="198">Поэзия</option>
+
+                                    <option value="199">Творческий вечер</option>
+
+                                </optgroup>
+                                <optgroup label="Шоу и концерты">
+                                    <option value="200">Комедия, юмор</option>
+
+                                </optgroup>
+                                <optgroup label="Обучение и образование">
+                                    <option value="201">Вокальное искусство</option>
+
+                                </optgroup>
+                                <optgroup label="Образ жизни">
+                                    <option value="203">Религия</option>
+
+                                </optgroup>
+                                <optgroup label="Психология и эзотерика">
+                                    <option value="204">Медитация</option>
+
+                                </optgroup>
+                                <optgroup label="Шоу и концерты">
+                                    <option value="206">Шоу</option>
+
+                                </optgroup>
+                                <optgroup label="Праздники">
+                                    <option value="207">Новый год</option>
+
+                                </optgroup>
+                                <optgroup label="Образ жизни">
+                                    <option value="213">Благотворительность</option>
+
+                                </optgroup>
+                                <optgroup label="Музыка">
+                                    <option value="214">Народная музыка и культура</option>
+
+                                </optgroup>
+                                <optgroup label="Активный отдых">
+                                    <option value="215">Авто-мото</option>
+
+                                </optgroup>
+                                <optgroup label="Образ жизни">
+                                    <option value="218">Компьютерные игры</option>
+
+                                </optgroup>
+                                <optgroup label="Детская афиша">
+                                    <option value="219">Семья</option>
+
+                                </optgroup>
+                                <optgroup label="Обучение и образование">
+                                    <option value="222">Курсы</option>
+
+                                </optgroup>
+                                <optgroup label="Здоровье и спорт">
+                                    <option value="223">Здоровье</option>
+
+                                </optgroup>
+                                <optgroup label="Активный отдых">
+                                    <option value="224">Пейнтбол/Страйкбол</option>
+
+                                </optgroup>
+                                <optgroup label="Обучение и образование">
+                                    <option value="225">Ораторское мастерство</option>
+
+                                </optgroup>
+                                <optgroup label="Здоровье и спорт">
+                                    <option value="226">Шахматы</option>
+
+                                </optgroup>
+                                <optgroup label="Обучение и образование">
+                                    <option value="230">Образование</option>
+
+                                </optgroup>
+                                <optgroup label="Красота, мода">
+                                    <option value="232">Мода</option>
+
+                                </optgroup>
+                                <optgroup label="Праздники">
+                                    <option value="251">Хэллоуин</option>
+
+                                    <option value="252">Рождество и Новый год</option>
+
+                                </optgroup>
+                                <optgroup label="Образ жизни">
+                                    <option value="255">Знакомства</option>
+
+                                </optgroup>
+                                <optgroup label="Общество">
+                                    <option value="256">Мероприятия для женщин</option>
+
+                                    <option value="257">Мероприятия для студентов</option>
+
+                                </optgroup>
+                                <optgroup label="Шоу и концерты">
+                                    <option value="258">Комедия и юмор</option>
+
+                                </optgroup>
+                                <optgroup label="Образ жизни">
+                                    <option value="261">Танцы</option>
+
+                                </optgroup>
+                                <optgroup label="Психология и эзотерика">
+                                    <option value="263">Эзотерика</option>
+
+                                </optgroup>
+                                <optgroup label="Общество">
+                                    <option value="265">Молодежь</option>
+
+                                </optgroup>
+                                <optgroup label="Праздники">
+                                    <option value="266">День Победы</option>
+
+                                    <option value="267">8 марта</option>
+
+                                    <option value="268">День защитника отечества</option>
+
+                                    <option value="269">Другие праздники</option>
+
+                                </optgroup>
+                                <optgroup label="Образ жизни">
+                                    <option value="270">Хобби</option>
+
+                                </optgroup>
+                                <optgroup label="Музыка">
+                                    <option value="271">Бардовская песня</option>
+
+                                </optgroup>
+                                <optgroup label="Образ жизни">
+                                    <option value="272">Развлечения</option>
+
+                                </optgroup>
+                                <optgroup label="Праздники">
+                                    <option value="273">День города</option>
+
+                                </optgroup>
+                            </select>
+
+
+
+
+
+
+
+                            <div style="display: block; margin: 1rem 0 0;">
+                                <i class="fas fa-tag" style="margin-right: 0;"></i>
+                                <a style=" text-decoration: underline; cursor: pointer;" onclick="alert(`Эта опция только для платных анонсов.
+Сохраните анонс и выберите вариант платного размещения.`);">
+                                    больше возможностей
+                                </a>
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+                        <div class="sub">
+
+
+                            <label style="display: block; margin-top: 10px; margin-bottom: 0;">
+
+                                <i class="fas fa-rub fa-ruble-sign"></i>
+
+                                Стоимость
+                            </label>
+                            <small>мин</small>
+                            <input type="number" name="min_price" step="1" class="form-control monitor-change"
+                                style="max-width: 70px; padding: 2px; display: inline" id="id_min_price">
+                            <small>макс</small>
+                            <input type="number" name="max_price" step="1" class="form-control monitor-change"
+                                style="max-width: 70px; padding: 2px; display: inline" id="id_max_price">
+                            <!-- руб. None  -->
+
+
+                            <div class="admin-hint">
+                                Поставьте 0 руб., если мероприятие бесплатное
+                            </div>
+
+
+
+                        </div>
+
+
+                        <div class="sub">
+                            <label><i class="fas fa-user"></i> Выступают
+                                <small style="font-size: 65%">Музыканты, спикеры, тренеры...</small>
+
+                            </label>
+
+
+
+                            <div id="show-performer">
+
+                            </div>
+
+                            <input type="text" id="autocomplete-performer" data-object-type="performer"
+                                class="autocomplete form-control">
+                            <select name="performer" id="id_performer" style="display: none"></select>
+                            <input type="text" name="id_performers" id="id_performers" value="" style="display: none" />
+
+                            <div class="admin-hint" style="font-size: 80%; line-height: 100%; margin: 10px 0">
+
+                                Начните набирать название коллектива или фамилию и затем выберите из выпадающего списка.
+                                <br />
+                                Если не нашли коллектив или человека, добавьте его.
+                                <br>
+                                Вы можете указать нескольких выступающих.
+                            </div>
+
+                            <a href="/performer/add/" target="_blank" class="btn btn-default popup-launch22"
+                                data-form22="performer" data-bs-toggle22="modal" data-bs-target22="#myModal"><i
+                                    class="fas fa-plus"></i> добавить выступающего</a>
+                        </div>
+
+
+                        <div class="sub">
+                            <label>
+                                <i class="fas fa-volume-up"></i>
+                                Организатор</label>
+
+
+                            <div id="show-organizer">
+
+                            </div>
+
+                            <input type="text" id="autocomplete-organizer" data-object-type="organizer"
+                                class="autocomplete form-control">
+                            <select name="organizer" id="id_organizer" style="display: none"></select>
+                            <input type="text" name="id_organizers" id="id_organizers" value="" style="display: none" />
+
+                            <div class="admin-hint" style="font-size: 80%; line-height: 100%; margin: 10px 0">
+
+                                Начните набирать имя/название организатора и выберите из списка
+                            </div>
+                            <a href="/organizer/add/" target="_blank" class="btn btn-default popup-launch22"
+                                data-form22="organizer" data-bs-toggle22="modal" data-bs-target22="#myModal"><i
+                                    class="fas fa-plus"></i> добавить организатора</a>
+                        </div>
+
+
+
+                        <div class="sub">
+                            <label>
+                                <i class="fa-solid fa-rectangle-ad"></i>
+                                ERID
+
+                                <a target="_blank" href="https://admin.gorodzovet.ru/ru/faq/#collapse12">
+                                    <i class="fas fa-question-circle"></i>
+                                </a>
+                            </label>
+
+
+
+
+                            <br><label><small style="font-size: 65%">erid</small></label>
+                            <input type="text" name="erid" maxlength="20" class="form-control" id="id_erid">
+
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <div style="text-align: center; padding: 40px 0">
+                <a class="btn btn-default block-loading" style="display: none; ">
+                    <i class="fas fa-spinner fa-spin"></i> Пожалуйста, подождите...
+                </a>
+
+                <button class="btn btn-success btn-lg show-loading form-live-submit"
+                    style="font-size: 130%;	padding: 5px 15px;"><i class="fas fa-save"></i> Сохранить</button>
+            </div>
+        </div>
+
+
+
+        </form>
+
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        ГородЗовёт
+                        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" id="form-place" data-select="place" action="/ajax/save/place/"
+                            class="popup">
+                            <input type="hidden" name="csrfmiddlewaretoken"
+                                value="Cj1M0Kac2nS6qX5IIaYPrf3GcRBMmheEeI8abXFwKbnhVMz7TldDQLBdiQAyq9pP">
+
+                            <label>Название места</label>
+
+                            например, Дворец культуры железнодорожников или Антикафе "Магнит"
+
+                            <label>Расположение</label>
+                            <div class="row">
+                                <div class="col-sm-1">Город:</div>
+                                <div class="col-sm-10">
+                                    <select name="city" style="display: inline; width: auto" class="form-control"
+                                        required id="id_city">
+                                        <option value="" selected>---------</option>
+
+                                        <option value="507">Абакан</option>
+
+                                        <option value="23628">Алматы</option>
+
+                                        <option value="114">Анапа</option>
+
+                                        <option value="472">Ангарск</option>
+
+                                        <option value="91">Архангельск</option>
+
+                                        <option value="23714">Астана</option>
+
+                                        <option value="541">Астрахань</option>
+
+                                        <option value="24006">Байкал</option>
+
+                                        <option value="23707">Баку</option>
+
+                                        <option value="13">Балашиха</option>
+
+                                        <option value="339">Барнаул</option>
+
+                                        <option value="24849">Батуми</option>
+
+                                        <option value="336">Белгород</option>
+
+                                        <option value="23660">Белград</option>
+
+                                        <option value="942">Бийск</option>
+
+                                        <option value="23643">Бишкек</option>
+
+                                        <option value="1148">Благовещенск</option>
+
+                                        <option value="23960">Братск</option>
+
+                                        <option value="415">Брянск</option>
+
+                                        <option value="59">Великий Новгород</option>
+
+                                        <option value="236">Владивосток</option>
+
+                                        <option value="930">Владикавказ</option>
+
+                                        <option value="77">Владимир</option>
+
+                                        <option value="90">Волгоград</option>
+
+                                        <option value="897">Волжский</option>
+
+                                        <option value="1">Вологда</option>
+
+                                        <option value="156">Воронеж</option>
+
+                                        <option value="173">Выборг</option>
+
+                                        <option value="23573">Геленджик</option>
+
+                                        <option value="23580">Горно-Алтайск</option>
+
+                                        <option value="23674">Грозный</option>
+
+                                        <option value="1236">Дербент</option>
+
+                                        <option value="462">Дзержинск</option>
+
+                                        <option value="408">Евпатория</option>
+
+                                        <option value="24">Екатеринбург</option>
+
+                                        <option value="23589">Ереван</option>
+
+                                        <option value="892">Ессентуки</option>
+
+                                        <option value="614">Жуковский</option>
+
+                                        <option value="23584">Зеленоград</option>
+
+                                        <option value="127">Иваново</option>
+
+                                        <option value="194">Ижевск</option>
+
+                                        <option value="265">Иркутск</option>
+
+                                        <option value="104">Йошкар-Ола</option>
+
+                                        <option value="48">Казань</option>
+
+                                        <option value="42">Калининград</option>
+
+                                        <option value="125">Калуга</option>
+
+                                        <option value="880">Каменск-Уральский</option>
+
+                                        <option value="330">Кемерово</option>
+
+                                        <option value="510">Керчь</option>
+
+                                        <option value="159">Киров</option>
+
+                                        <option value="389">Кисловодск</option>
+
+                                        <option value="1054">Клин</option>
+
+                                        <option value="1424">Ковров</option>
+
+                                        <option value="253">Коломна</option>
+
+                                        <option value="924">Комсомольск-на-Амуре</option>
+
+                                        <option value="78">Королёв</option>
+
+                                        <option value="71">Кострома</option>
+
+                                        <option value="979">Красногорск</option>
+
+                                        <option value="69">Краснодар</option>
+
+                                        <option value="147">Красноярск</option>
+
+                                        <option value="23663">Кронштадт</option>
+
+                                        <option value="949">Курган</option>
+
+                                        <option value="390">Курск</option>
+
+                                        <option value="16">Липецк</option>
+
+                                        <option value="1263">Лобня</option>
+
+                                        <option value="300">Люберцы</option>
+
+                                        <option value="710">Магадан</option>
+
+                                        <option value="92">Магнитогорск</option>
+
+                                        <option value="863">Махачкала</option>
+
+                                        <option value="899">Миасс</option>
+
+                                        <option value="489">Минеральные Воды</option>
+
+                                        <option value="5">Москва</option>
+
+                                        <option value="33">Мурманск</option>
+
+                                        <option value="982">Мытищи</option>
+
+                                        <option value="291">Набережные Челны</option>
+
+                                        <option value="23662">Нальчик</option>
+
+                                        <option value="400">Нефтекамск</option>
+
+                                        <option value="952">Нефтеюганск</option>
+
+                                        <option value="28">Нижневартовск</option>
+
+                                        <option value="23578">Нижнекамск</option>
+
+                                        <option value="23">Нижний Новгород</option>
+
+                                        <option value="334">Нижний Тагил</option>
+
+                                        <option value="413">Новокузнецк</option>
+
+                                        <option value="23576">Новомосковск</option>
+
+                                        <option value="164">Новороссийск</option>
+
+                                        <option value="213">Новосибирск</option>
+
+                                        <option value="466">Новочебоксарск</option>
+
+                                        <option value="23688">Ногинск</option>
+
+                                        <option value="294">Норильск</option>
+
+                                        <option value="883">Обнинск</option>
+
+                                        <option value="644">Одинцово</option>
+
+                                        <option value="366">Омск</option>
+
+                                        <option value="23581">Онлайн</option>
+
+                                        <option value="216">Орёл</option>
+
+                                        <option value="39">Оренбург</option>
+
+                                        <option value="23762">Орехово-Зуево</option>
+
+                                        <option value="26">Пенза</option>
+
+                                        <option value="38">Пермь</option>
+
+                                        <option value="87">Петрозаводск</option>
+
+                                        <option value="545">Петропавловск-Камчатский</option>
+
+                                        <option value="307">Подольск</option>
+
+                                        <option value="1122">Прокопьевск</option>
+
+                                        <option value="377">Псков</option>
+
+                                        <option value="459">Пятигорск</option>
+
+                                        <option value="10">Ростов-на-Дону</option>
+
+                                        <option value="7">Рыбинск</option>
+
+                                        <option value="89">Рязань</option>
+
+                                        <option value="55">Самара</option>
+
+                                        <option value="2">Санкт-Петербург</option>
+
+                                        <option value="140">Саранск</option>
+
+                                        <option value="276">Саратов</option>
+
+                                        <option value="54">Севастополь</option>
+
+                                        <option value="57">Северодвинск</option>
+
+                                        <option value="438">Сергиев Посад</option>
+
+                                        <option value="927">Серпухов</option>
+
+                                        <option value="289">Симферополь</option>
+
+                                        <option value="281">Смоленск</option>
+
+                                        <option value="133">Сочи</option>
+
+                                        <option value="130">Ставрополь</option>
+
+                                        <option value="23696">Стамбул</option>
+
+                                        <option value="240">Старый Оскол</option>
+
+                                        <option value="478">Стерлитамак</option>
+
+                                        <option value="552">Сургут</option>
+
+                                        <option value="873">Сызрань</option>
+
+                                        <option value="122">Сыктывкар</option>
+
+                                        <option value="423">Таганрог</option>
+
+                                        <option value="103">Тамбов</option>
+
+                                        <option value="23610">Тбилиси</option>
+
+                                        <option value="318">Тверь</option>
+
+                                        <option value="88">Тольятти</option>
+
+                                        <option value="120">Томск</option>
+
+                                        <option value="1210">Туапсе</option>
+
+                                        <option value="35">Тула</option>
+
+                                        <option value="245">Тюмень</option>
+
+                                        <option value="359">Улан-Удэ</option>
+
+                                        <option value="8">Ульяновск</option>
+
+                                        <option value="241">Уфа</option>
+
+                                        <option value="41">Хабаровск</option>
+
+                                        <option value="471">Ханты-Мансийск</option>
+
+                                        <option value="46">Чебоксары</option>
+
+                                        <option value="99">Челябинск</option>
+
+                                        <option value="9">Череповец</option>
+
+                                        <option value="358">Черкесск</option>
+
+                                        <option value="887">Чехов</option>
+
+                                        <option value="833">Чита</option>
+
+                                        <option value="1018">Шерегеш</option>
+
+                                        <option value="106">Электросталь</option>
+
+                                        <option value="23613">Элиста</option>
+
+                                        <option value="539">Энгельс</option>
+
+                                        <option value="643">Южно-Сахалинск</option>
+
+                                        <option value="409">Якутск</option>
+
+                                        <option value="7729">Ялта</option>
+
+                                        <option value="3">Ярославль</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 7px">
+                                <div class="col-sm-1">Адрес:</div>
+                                <div class="col-sm-10">
+                                    <input type="text" name="address" maxlength="255" style="display: inline; "
+                                        class="form-control" id="id_address">
+                                    <small>
+                                        Укажите настоящий адрес в этом городе. Один адрес. Пример: улица Эйнштейна, дом
+                                        25
+                                        <br>
+                                        Вебинары и другие онлайн-мероприятия мы к публикации не принимаем.
+
+                                    </small>
+                                </div>
+                            </div>
+
+
+                            <label>Краткое описание (не обязательно)</label>
+                            <textarea name="description" cols="40" rows="10" style="height: 150px" class="form-control"
+                                id="id_description">
+</textarea>
+
+                            <div class="result" style="display: none">-</div>
+
+                            <div style="text-align: right; margin: 30px 0">
+                                <button class="btn btn-success">Добавить</button>
+                            </div>
+                        </form>
+
+
+
+                        <form method="post" id="form-organizer" data-select="organizers" action="/ajax/save/organizer/"
+                            class="popup"><input type="hidden" name="csrfmiddlewaretoken"
+                                value="Cj1M0Kac2nS6qX5IIaYPrf3GcRBMmheEeI8abXFwKbnhVMz7TldDQLBdiQAyq9pP">
+                            <label>Название организатора</label>
+                            <input type="text" name="name" maxlength="255" class="form-control" required id="id_name">
+                            например, Клуб "Ровесник" или Ивент-агентство "Профи"
+
+
+                            <label>Краткое описание (не обязательно)</label>
+                            <textarea name="description" cols="40" rows="10" style="height: 150px" class="form-control"
+                                id="id_description">
+</textarea>
+
+                            <div class="result" style="display: none">-</div>
+
+                            <div style="text-align: right; margin: 30px 0">
+                                <button class="btn btn-success">Добавить</button>
+                            </div>
+                        </form>
+
+
+                        <form method="post" id="form-performer" data-select="performer" action="/ajax/save/performer/"
+                            class="popup"><input type="hidden" name="csrfmiddlewaretoken"
+                                value="Cj1M0Kac2nS6qX5IIaYPrf3GcRBMmheEeI8abXFwKbnhVMz7TldDQLBdiQAyq9pP">
+                            <label>Название выступающего</label>
+                            <input type="text" name="name" maxlength="255" class="form-control" required id="id_name">
+                            Например, Децл или Группа "XYZ" или Иван Иванов.
+                            <br />
+                            Если участвует несколько выступающих, каждого заносите отдельно!
+
+                            <label>Тип</label>
+                            <select name="performer_type" class="form-control" id="id_performer_type">
+                                <option value="" selected>---------</option>
+
+                                <option value="4">Автор</option>
+
+                                <option value="3">Актер</option>
+
+                                <option value="21">Актриса</option>
+
+                                <option value="28">Ведущий</option>
+
+                                <option value="29">Гид</option>
+
+                                <option value="1">Группа</option>
+
+                                <option value="10">Исполнитель</option>
+
+                                <option value="19">Комик</option>
+
+                                <option value="5">Композитор</option>
+
+                                <option value="30">Музыкант</option>
+
+                                <option value="12">Певец</option>
+
+                                <option value="23">Поэт</option>
+
+                                <option value="8">Предприниматель</option>
+
+                                <option value="25">Преподаватель</option>
+
+                                <option value="9">Психолог</option>
+
+                                <option value="24">Режиссер</option>
+
+                                <option value="7">Спикер</option>
+
+                                <option value="31">Спортсмен</option>
+
+                                <option value="13">Танцор</option>
+
+                                <option value="16">Фотограф</option>
+
+                                <option value="6">Художник</option>
+
+                                <option value="22">Эксперт</option>
+
+                            </select>
+
+
+                            <label>Краткое описание <small>(не обязательно)</small></label>
+                            <textarea name="description" cols="40" rows="10" style="height: 150px" class="form-control"
+                                id="id_description">
+</textarea>
+
+                            <div class="result" style="display: none">-</div>
+
+                            <div style="text-align: right; margin: 30px 0">
+                                <button class="btn btn-success">Добавить</button>
+                            </div>
+                        </form>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter42972689 = new Ya.Metrika2({
+                        id: 42972689,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true,
+                        webvisor: true
+                    });
+                } catch (e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks2");
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/42972689" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/i18n/ru.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/i18n/en.js"></script>
+    <script>
+        $(function () {
+            $(".select2").select2({
+                language: "ru"
+            });
+        });
+
+
+        $(function () {
+            $('.select22').select2({
+                language: "ru",
+                theme: 'bootstrap4',
+                placeholder: '',
+                escapeMarkup: function (markup) {
+                    return markup;
+                },
+                templateResult: function (data) {
+                    if (!data.id) { return data.text; }
+                    var $icon = '<i class="fas fa-' + data.element.dataset.icon + '"></i> ';
+                    var $text = data.text;
+                    return $icon + $text;
+                }
+            });
+        });
+
+
+        $(function () {
+            $(".select2place").select2({
+                language: "ru",
+                ajax: {
+                    url: '/ajax/get/objects/?object_type=place',
+                    dataType: 'json'
+                }
+            });
+        });
+    </script>
+
+
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.3.0/jquery.autocomplete.min.js"></script>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var MAX_SEANCES = 4;
+            var seances_count = 0;
+            ///var DEFAULT_DATE = moment().format('DD.MM.YYYY');
+
+            $('#add_seance').click(function () {
+                if (seances_count < MAX_SEANCES) {
+                    // create new seance form fields
+                    var $seance = $('<div class="seance"></div>');
+                    var $date = $('<input class="form-control date monitor-change dynamic dynamicDatepicker" name="seances-' + seances_count + '-date">');
+                    var $time = $('<input type="time" class="form-control timepicker monitor-change dynamic dynamicTimepicker" style="max-width: 100px;" name="seances-' + seances_count + '-time">');
+                    $seance.append($date);
+                    $seance.append($time);
+                    $('#seances').append($seance);
+                    seances_count++;
+                }
+            });
+        });
+    </script>
+
+
+    <script>
+        function show_save() {
+            $(".show-save").addClass("btn-success").removeClass("btn-default");
+        };
+
+        $('select').change(function () {
+            show_save();
+        });
+        $('input').change(function () {
+            show_save();
+        });
+        $('textarea').change(function () {
+            show_save();
+        });
+
+        //$(document).on(".monitor-change",  // for dynamic fields
+        $('.monitor-change', '[contenteditable]').each(function () {
+            var elem = $(this);
+            elem.data('oldVal', elem.val());
+
+            elem.bind("propertychange change click keyup input paste", function (event) {
+                if (elem.data('oldVal') != elem.val()) {
+                    elem.data('oldVal', elem.val());
+
+                    show_save();
+                }
+            });
+        });
+
+
+
+
+        $(document).on("click", ".performer-remove, .organizer-remove", function () {
+            let idToRemove = $(this).data('id').toString();
+            let object_type = $(this).data('object_type');
+            let $input = $("#id_" + object_type + "s");
+            let currentIds = $input.val().split(',').map(String);
+            let newIds = currentIds.filter(id => id !== idToRemove);
+            $input.val(newIds.join(','));
+
+            $(this).parent().remove();
+            show_save();
+        });
+
+
+        $(document).on("click", ".place-remove", function () {
+            //console.log('place-remove');
+            id = '' + $(this).data('id');
+            $("#id_place option[value=" + id + "]").remove();
+            $(this).parent().remove();
+            $("#show-place").hide();
+            $("#place_selected").hide();
+            $("#place_hint").show();
+
+            show_save();
+        });
+
+
+        $('.autocomplete').autocomplete({
+            serviceUrl: function (el, query) {
+                var city_id = "";
+                if (!city_id) {
+                    city_id = $("#id_city").val();
+                }
+                if (!city_id) {
+                    $("#set_city").show();
+                    $("#place_hint").hide();
+                } else {
+                    $("#set_city").hide();
+                }
+                return "/ajax/get/objects/?method=ajax&city_id=" + city_id + "&q=" + encodeURIComponent(query);
+            },
+            dataType: 'json',
+            minChars: 3,
+            onSelect: function (suggestion) {
+                v = suggestion.value;
+                id = suggestion.data;
+                object_type = suggestion.object_type;
+                //console.log(v + ', ' + id);
+                if (object_type == 'performer' || object_type == 'organizer') {
+                    $('#show-' + object_type).append('<span>' + v + '<i class="fas fa-remove ' + object_type + '-remove" data-id="' + id + '"></i></span>');
+                } else {
+                    $('#show-' + object_type).html('<span>' + v + ' <i class="fas fa-remove ' + object_type + '-remove" data-id="' + id + '"></i></span>');
+                }
+                $("#autocomplete-" + object_type).val("");
+                $("#id_" + object_type).append('<option value="' + id + '">' + v + '</option>');
+                //console.log("#id_"+object_type);
+                $("#id_" + object_type + " option[value='" + id + "']").prop("selected", true);
+
+                if (object_type == 'place') {
+                    $("#id_" + object_type + "s").val(id);
+                } else {
+                    // several values
+                    v = $("#id_" + object_type + "s").val();
+                    $("#id_" + object_type + "s").val(v + ',' + id);
+                }
+
+                $("#select_place").hide();
+                $("#place_selected").show();
+                show_save();
+            },
+            onSearchStart: function () {
+                $("#looking_for_places").show();
+                $("#set_city").hide();
+                $("#select_place").hide();
+                $("#place_hint").hide();
+                $("#place_selected").hide();
+                $("#no_place_found").hide();
+            },
+            onSearchComplete: function () {
+                $("#looking_for_places").hide();
+                $("#select_place").show();
+                $("#no_place_found").hide();
+            },
+            onSearchError: function (query, jqXHR, textStatus, errorThrown) {
+                console.log("onSearcherror query: " + query + "textStatus: " + textStatus + " errorThrown: " + errorThrown);
+                if (errorThrown == "abort") {
+                    //next chars while typing  
+                } else {
+                    city_id = $("#id_city").val();
+                    if (!city_id) {
+                        $("#set_city").show();
+                    } else {
+                        $("#no_place_found").show();
+                    }
+                    $("#looking_for_places").hide();
+                }
+            }
+        });
+        $('#autocomplete-place').autocomplete('setOptions', { params: { object_type: 'place' } });
+        $('#autocomplete-performer').autocomplete('setOptions', { params: { object_type: 'performer' } });
+        $('#autocomplete-organizer').autocomplete('setOptions', { params: { object_type: 'organizer' } });
+
+        $('#autocomplete-place').bind("paste", function (e) {
+            e.preventDefault();
+        });
+    </script>
+
+
+
+    <script type="text/javascript">
+        function adjustHeight(ctrl) {
+            if (ctrl.scrollHeight < 5000) {
+                $(ctrl).css({ 'height': 'auto', 'min-height': '400px', 'overflow-y': 'hidden' }).height(0).height(ctrl.scrollHeight);
+            }
+        }
+        $('textarea.resize').each(function () {
+            adjustHeight(this);
+        }).on('keyup keydown paste cut', function () { // change input
+            adjustHeight(this);
+        });   
+    </script>
+
+
+    <script>
+        $(".popup").on('submit', function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            form_id = $form.attr('id');
+            data = $form.serialize();
+            select = $form.data('select'); // todo remove
+            object_type = $form.data('select');
+
+
+            $.ajax({
+                type: $form.attr('method'),
+                url: $form.attr('action'),
+                data: data,
+                dataType: "json",
+
+                success: function (msg, status) {
+                    message = msg["message"];
+                    id = msg["id"];
+                    console.log(msg);
+                    //console.log(id);
+
+                    if (message) {
+                        $("#" + form_id + " .result").html(message);
+                        $("#" + form_id + " .result").show();
+                    }
+
+                    if (id) {
+
+
+                        if (object_type == "performer") {
+                            v = $("#id_" + object_type + "s").val();
+                            $("#id_" + object_type + "s").val(v + ',' + id);
+                            $('#show-' + object_type).append('<span>' + msg.title + '<i class="fas fa-remove ' + object_type + '-remove" data-id="' + id + '"></i></span>');
+                        } else {
+                            $("#id_" + select).append($("<option></option>")
+                                .attr("value", id)
+                                .text(msg.title)
+                            );
+                            $("#id_" + select).val(id);
+                        }
+
+                        $('#myModal').modal('hide');
+                        $(".popup-launch").blur();
+
+                        $(".popup").hide();
+                    }
+
+                }
+            })
+
+        });
+    </script>
+
+
+
+
+    <script type="text/javascript">
+        $('#myModal').on('show.bs.modal', function (e) {
+            var form = $(e.relatedTarget).data('form');
+            //console.log(form);
+            if (form) {
+                $(e.currentTarget).find('#form-' + form).show();
+            }
+        });
+
+        $('#myModal').on('hidden.bs.modal', function () {
+            $(".popup").hide();
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        //$(document).on('submit','#form-live'
+        //$(".form-live-submit").on('click', function(){
+        // $(document).on('click', '.form-live-submit', function () {
+        //     event.preventDefault();
+
+        //     // we need to move dynamic fields because add_seance_block doesn't append them to the form properly
+        //     $(document).find(".dynamic").each(function () {
+        //         $clone = $(this).clone();
+        //         $('#form-live').append($clone);
+        //         $clone.hide();
+        //     });
+        //     //return false;
+        //     $("#form-live").submit();
+        // });
+
+        // $('.alert').delay(3000).fadeOut('slow');
+
+        // $(".show-loading").on('click', function () {
+        //     $(this).hide();
+        //     $(".block-loading").show();
+        // })
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        yaCounter42972689.reachGoal('event_edit');
+    </script>
+
+
+
+
+    <!-- Chatra {literal} -->
+
+    <!-- <script>
+
+
+        (function (d, w, c) {
+            w.ChatraID = "dsyqNz5vb7zazvXn9";
+            var s = d.createElement('script');
+            w[c] = w[c] || function () {
+                (w[c].q = w[c].q || []).push(arguments);
+            };
+            s.async = true;
+            s.defer = true;
+            s.src = 'https://call.chatra.io/chatra.js';
+            if (d.head) d.head.appendChild(s);
+        })(document, window, 'Chatra');
+
+
+        Chatra('setIntegrationData', {
+            name: ' p0a1   (ru25123)',
+            email: 'razakovsukhrob@yandex.ru',
+            events: '1',
+            paid_events: '0',
+            priority: '',
+            city: 'Екатеринбург',
+        });
+
+
+    </script> -->
+
+    <!-- /Chatra {/literal} -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="main" style="margin-top: 100px;" title="lc = ru langru=">
+        <div class="footer-top-area">
+            <div class="container">
+                <div class="row row-wrap">
+                    <div class=" col-md-3 hidden-xs">
+                        <a href="/" style="color: #ea9e2e; text-decoration: none;">
+                            Мир меропритий
+
+                        </a>
+                        <br>
+
+
+
+                        <br>
+
+                        <span class="white" style="color: #f5f5f5;">Админка, личный кабинет организатора</span>
+
+
+                    </div>
+                    <div class=" col-md-9">
+
+
+
+
+
+
+                        <p style="color: #f5f5f5;">
+                            Свяжитесь с нами, если у вас есть какие-то вопросы или предложения
+                            <br />
+
+                            <a href="#" style="border-bottom: 1px solid #fff; padding-bottom: 2px; margin-right: 2rem;"
+                                onclick="Chatra('openChat', true)">
+                                <svg>
+                                    <use xlink:href="/static/fa/icons.svg?v=9m#comments"></use>
+                                </svg>
+                                <!-- Онлайн чат -->
+                            </a>
+
+
+
+
+
+
+                        </p>
+
+                    </div>
+                    <div class=" col-md-4">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter42972689 = new Ya.Metrika2({
+                        id: 42972689,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true,
+                        webvisor: true
+                    });
+                } catch (e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks2");
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/42972689" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+
+
+
+
+
+
+    <!-- Chatra {literal} -->
+    <script>
+
+
+        (function (d, w, c) {
+            w.ChatraID = "dsyqNz5vb7zazvXn9";
+            var s = d.createElement('script');
+            w[c] = w[c] || function () {
+                (w[c].q = w[c].q || []).push(arguments);
+            };
+            s.async = true;
+            s.defer = true;
+            // s.src = 'https://call.chatra.io/chatra.js';
+            if (d.head) d.head.appendChild(s);
+        })(document, window, 'Chatra');
+
+
+
+    </script>
+    <!-- /Chatra {/literal} -->
+
+
+
+</body>
+
+</html>

@@ -115,6 +115,51 @@
   }
   
   
+  .dropdown-content {
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.fullcalendar {
+    padding: 10px;
+}
+
+.fc-daygrid-day {
+    border: 1px solid #e1e1e1;
+    min-height: 100px; 
+}
+
+.fc-day-today {
+    background-color: #f0f0f0;
+}
+
+.fc-daygrid-day-top {
+    text-align: right;
+    padding: 5px;
+    font-size: 12px;
+}
+
+.fc-daygrid-day-number {
+    font-weight: bold;
+}
+
+.fc-col-header-cell {
+    background-color: #f8f8f8;
+    padding: 10px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .fullcalendar {
+        width: 100%;
+    }
+
+    .fc-daygrid-day {
+        min-height: 50px;
+    }
+}
+
   /*==========================================================*/
   
     /* Стили для подвала */

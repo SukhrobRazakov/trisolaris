@@ -11,7 +11,7 @@ body {
     font-style: normal;  /* Нормальный стиль шрифта */
     display: flex; /* Включаем flex-контейнер для всего body */
     flex-direction: column; /* Делаем основное направление колонной */
-    justify-content: space-between; /* Распределяем пространство между шапкой, контентом и футером */
+    justify-content: space-between; /* Распределяем пространство между шапкой, контентом и футером top-row */
 }
 
 .content {
@@ -55,29 +55,34 @@ body {
 }
 
 
-/* /* Основные стили для выпадающего меню профиля ------------------------------------------------ */
+/* /* Основные стили для выпадающего меню профиля ---------------------------------------------- */
 /* Стили для иконки профиля, чтобы курсор изменялся на указатель */
 .profile .fas {
     cursor: pointer;
+    position: relative;
 }
 
-.profile {
-    position: initial; /* Это важно для корректного позиционирования выпадающего меню */
-}
 
 .profile .dropdown-content {
     display: none;
-    position: fixed; /* Фиксированное позиционирование относительно окна браузера */
+    position: absolute;
     top: 95px; /* Расположение меню ниже иконки профиля */
-    right: 1000px; /* Прижимаем к правой стороне экрана right: */
+    right: 0; /* Прижимаем к правой стороне экрана right: */
     width: 30%; /* Ширина 25% от ширины экрана */
     background-color: rgb(240, 240, 0); /* Желтый фон */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Тень для меню */
     z-index: 1000; /* Убедитесь, что выпадающее меню будет над другими элементами */
     border-radius: 3px;
- 
+
 }
 
+.profile .dropdown-content a {
+    display: block; /* Блочное отображение для занимания всей доступной ширины */
+    white-space: nowrap; /* Запрет на перенос строк */
+    padding: 5px 10px; /* Паддинги для удобства клика и читаемости */
+    text-decoration: none; /* Убрать подчеркивание ссылок */
+    color: black; /* Цвет текста */
+}
 
 /* Стили для элементов внутри выпадающего меню */
 .profile .dropdown-content div {
@@ -90,7 +95,7 @@ body {
 
 /* Стили для элементов меню при наведении */
 .profile .dropdown-content div:hover {
-    background-color: #d4d769; /* Цвет фона при наведении */
+    background-color: #e1c19e; /* Цвет фона при наведении */
     content: none;
 }
 
@@ -135,9 +140,10 @@ header {
 
 .logo img {
     height: 30px; /* Высота логотипа */
+    
 }
 
-/* nazvaniya sayta */
+/* nazvaniya sayta -------------------------------------------------------------------------------------------------------------------*/
 .site-name {
     font-size: 20px;
     font-weight: 200;
@@ -149,9 +155,15 @@ header {
     text-decoration: none; /* Убираем подчеркивание */
 }
 
+.site-name:hover {
+    color: #464545; /* Задаем тот же цвет, что и в обычном состоянии */
+    text-decoration: none; /* Подтверждаем, что подчеркивание отсутствует */
+}
+
+/* poiskni stili */
 .right-section {
     display: flex;
-    font-size: 22px; /* Увеличиваем размер шрифта иконок */
+    font-size: 22px; /* Увеличиваем размер шрифта иконок right-section */
     margin: 0 10px; /* Добавляем немного пространства между иконками */
     align-items: center;
 }
@@ -174,7 +186,7 @@ header {
 
 .divider {  
     height: 1px;
-    width: 90%; /* Ширина разделительной линии */
+    width: 100%; /* Ширина разделительной линии */
     background-color: rgb(219, 217, 217);
     margin: 20px 0;
 }
@@ -198,7 +210,7 @@ header {
     position: relative; /* Для позиционирования выпадающего меню */
     /*  */
     flex: 1;
-    text-align: center;
+    text-align: center;                                                                                              /*-----------------------*/
     z-index: 1; /* Убедимся, что текст будет над фоном */
     /*  */
     width: 100%;
@@ -228,7 +240,7 @@ header {
 .dropdown-content {
     display: none;
     position: absolute;                                                                                       /*   */
-    width: 23.7%; /* Полная ширина элемента меню */
+    width: 24.3%; /* Полная ширина элемента меню */
     background-color: rgb(236, 228, 228);
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
@@ -246,6 +258,9 @@ header {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+/* календар */
+
 
 /* ---------------------------------------------------- */
     /* Стили для подвала */
