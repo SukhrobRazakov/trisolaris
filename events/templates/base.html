@@ -4507,15 +4507,15 @@
             <div class="divider"></div>
 
             <div class="bottom-row">
-                <div class="menu-item dropdown" data-menu="places"><i class="fa-regular fa-building"></i> Места</div>
+                <div class="menu-item dropdown" data-menu="places"><i class="fa-regular fa-building"></i> Выбор мест</div>
                 <div id="calendar" class="menu-item dropdown" data-menu="dates"><i
-                        class="fa-regular fa-calendar-days"></i> Даты</div>
+                        class="fa-regular fa-calendar-days"></i> Выбор даты</div>
 
 
 
-                <div class="menu-item dropdown" data-menu="tags"> <i class="fa-solid fa-hashtag"></i> Теги</div>
+                <div class="menu-item dropdown" data-menu="tags"> <i class="fa-solid fa-hashtag"></i> Выбор слов</div>
 
-                <a href="{% url 'recommend' %}" class="menu-item"><i class="fas fa-sliders-h"></i> Мой выбор</a>
+                <a href="{% url 'recommend' %}" class="menu-item"><i class="fas fa-sliders-h"></i> Персональное</a>
                 <style>
                     .menu-item:hover {
                         color: #000000;
@@ -4533,54 +4533,51 @@
 
             <div class="dropdown-content" id="places-menu">
                 <ul class=types__list>
-                    <li class="types__item active"><a class=types__link href=/spb/venues/biblioteka /> <svg>
+                    <li class="types__item active"><a class=types__link href="#"> <svg>
                             <use xlink:href=/static/fa/icons.svg?v=9k#book></use>
                         </svg> БИБЛИОТЕКИ </a>
-                    <li class="types__item active"><a class=types__link href=/spb/venues/vuz /> <svg>
+                    <li class="types__item active"><a class=types__link href="#"> <svg>
                             <use xlink:href=/static/fa/icons.svg?v=9k#university></use>
                         </svg> ВУЗЫ </a>
-                    <li class="types__item active"><a class=types__link href=/spb/venues/gallery /> <svg>
+                    <li class="types__item active"><a class=types__link href="#"> <svg>
                             <use xlink:href=/static/fa/icons.svg?v=9k#palette></use>
                         </svg> ГАЛЕРЕИ </a>
-                    <li class="types__item active"><a class=types__link href=/spb/venues/culture /> <svg>
+                    <li class="types__item active"><a class=types__link href="#"> <svg>
                             <use xlink:href=/static/fa/icons.svg?v=9k#theater-masks></use>
                         </svg> ДОМА КУЛЬТУРЫ </a>
-                    <li class="types__item active"><a class=types__link href=/spb/venues/kafe /> <svg>
+                    <li class="types__item active"><a class=types__link href="#"> <svg>
                             <use xlink:href=/static/fa/icons.svg?v=9k#coffee></use>
                         </svg> КАФЕ </a>
-                    <li class="types__item active"><a class=types__link href=/spb/venues/kino /> <svg>
+                    <li class="types__item active"><a class=types__link href="#"> <svg>
                             <use xlink:href=/static/fa/icons.svg?v=9k#film></use>
                         </svg> КИНОТЕАТРЫ </a>
-                    <li class="types__item active"><a class=types__link href=/spb/venues/contsert-hall />
+                    <li class="types__item active"><a class=types__link href="#">
                         <svg>
                             <use xlink:href=/static/fa/icons.svg?v=9k#microphone></use>
                         </svg> КОНЦЕРТНЫЕ ЗАЛЫ </a>
-                    <li class="types__item active"><a class=types__link href=/spb/venues/shop /> <svg>
-                            <use xlink:href=/static/fa/icons.svg?v=9k#shopping-cart></use>
-                        </svg> МАГАЗИНЫ </a>
-                    <li class="types__item active"><a class=types__link href=/spb/venues/museum /> <svg>
+                    <li class="types__item active"><a class=types__link href="#"> <svg>
                             <use xlink:href=/static/fa/icons.svg?v=9k#landmark></use>
                         </svg> МУЗЕИ </a>
-                    <li class="types__item active"><a class=types__link href=/spb/venues/bereg /> <svg>
+                    <li class="types__item active"><a class=types__link href="#"> <svg>
                             <use xlink:href=/static/fa/icons.svg?v=9k#water></use>
                         </svg> НАБЕРЕЖНЫЕ </a>
-                    <li class="types__item active"><a class=types__link href=/spb/venues/park /> <svg>
+                    <li class="types__item active"><a class=types__link href="#"> <svg>
                             <use xlink:href=/static/fa/icons.svg?v=9k#tree></use>
                         </svg> ПАРКИ </a>
-                    <li class="types__item active"><a class=types__link href=/spb/venues/dance /> <svg>
+                    <li class="types__item active"><a class=types__link href="#"> <svg>
                             <use xlink:href=/static/fa/icons.svg?v=9k#shoe-prints></use>
                         </svg> ТАНЦЫ </a>
-                    <li class="types__item active"><a class=types__link href=/spb/venues/tvorchestvo />
+                    <li class="types__item active"><a class=types__link href="#">
                         <svg>
                             <use xlink:href=/static/fa/icons.svg?v=9k#paint-brush></use>
                         </svg> ТВОРЧЕСТВО </a>
-                    <li class="types__item active"><a class=types__link href=/spb/venues/teatr /> <svg>
+                    <li class="types__item active"><a class=types__link href="#"> <svg>
                             <use xlink:href=/static/fa/icons.svg?v=9k#theater-masks></use>
                         </svg> ТЕАТРЫ </a>
-                    <li class="types__item active"><a class=types__link href=/spb/venues/study /> <svg>
+                    <li class="types__item active"><a class=types__link href="#"> <svg>
                             <use xlink:href=/static/fa/icons.svg?v=9k#school></use>
                         </svg> УЧЕБНЫЕ ЦЕНТРЫ </a>
-                    <li class="types__item active"><a class=types__link href=/spb/venues/filarmonia /> <svg>
+                    <li class="types__item active"><a class=types__link href="#"> <svg>
                             <use xlink:href=/static/fa/icons.svg?v=9k#music></use>
                         </svg> ФИЛАРМОНИИ </a>
                 </ul>
@@ -4596,57 +4593,54 @@
             <div class="dropdown-content" id="tags-menu">
                 <div>
                     <ul class=types__list>
-                        <li class=types__item><a class=types__link href=/spb/it /> <svg>
-                                <use xlink:href=/static/fa/icons.svg?v=9m#laptop-code></use>
-                            </svg> IT и технологии </a>
-                        <li class=types__item><a class=types__link href=/spb/study /> <svg>
+                        <li class=types__item><a class=types__link href="{% url 'obr' %}"> <svg>
                                 <use xlink:href=/static/fa/icons.svg?v=9m#book></use>
                             </svg> Обучение и образование </a>
-                        <li class=types__item><a class=types__link href=/spb/theater /> <svg>
-                                <use xlink:href=/static/fa/icons.svg?v=9m#theater-masks></use>
-                            </svg> Театр </a>
-                        <li class=types__item><a class=types__link href=/spb/shows /> <svg>
-                                <use xlink:href=/static/fa/icons.svg?v=9m#microphone></use>
-                            </svg> Шоу и концерты </a>
-                        <li class=types__item><a class=types__link href=/spb/auto-moto /> <svg>
-                                <use xlink:href=/static/fa/icons.svg?v=9m#car></use>
-                            </svg> Авто-мото </a>
-                        <li class=types__item><a class=types__link href=/spb/outdoor /> <svg>
-                                <use xlink:href=/static/fa/icons.svg?v=9m#hiking></use>
-                            </svg> Активный отдых </a>
-                        <li class=types__item><a class=types__link href=/spb/free /> <svg>
-                                <use xlink:href=/static/fa/icons.svg?v=9m#piggy-bank></use>
-                            </svg> Бесплатные мероприятия </a>
-                        <li class=types__item><a class=types__link href=/spb/pobeda /> <svg>
-                                <use xlink:href=/static/fa/icons.svg?v=9m#medal></use>
-                            </svg> День Победы </a>
-                        <li class=types__item><a class=types__link href=/spb/kids /> <svg>
-                                <use xlink:href=/static/fa/icons.svg?v=9m#child></use>
-                            </svg> Детская афиша </a>
-                        <li class=types__item><a class=types__link href=/spb/animals /> <svg>
-                                <use xlink:href=/static/fa/icons.svg?v=9m#paw></use>
-                            </svg> Животные </a>
-                        <li class=types__item><a class=types__link href=/spb/wellness /> <svg>
-                                <use xlink:href=/static/fa/icons.svg?v=9m#futbol></use>
-                            </svg> Здоровье и спорт </a>
-                        <li class=types__item><a class=types__link href=/spb/classic /> <svg>
-                                <use xlink:href=/static/fa/icons.svg?v=9m#music></use>
-                            </svg> Классическая музыка </a>
-                        <li class=types__item><a class=types__link href=/spb/concert /> <svg>
-                                <use xlink:href=/static/fa/icons.svg?v=9m#microphone></use>
-                            </svg> Концерты </a>
-                        <li class=types__item><a class=types__link href=/spb/culture /> <svg>
+                        <li class=types__item><a class=types__link href="#"> <svg>
                                 <use xlink:href=/static/fa/icons.svg?v=9m#image></use>
                             </svg> Культура и искусство </a>
-                        <li class=types__item><a class=types__link href=/spb/music /> <svg>
+                        <li class=types__item><a class=types__link href="#"> <svg>
+                                <use xlink:href=/static/fa/icons.svg?v=9m#theater-masks></use>
+                            </svg> Театр </a>
+                        <li class=types__item><a class=types__link href="#"> <svg>
+                                <use xlink:href=/static/fa/icons.svg?v=9m#laptop-code></use>
+                            </svg> IT и технологии </a>
+                        <li class=types__item><a class=types__link href="#"> <svg>
+                                <use xlink:href=/static/fa/icons.svg?v=9m#microphone></use>
+                            </svg> Шоу и концерты </a>
+                        <li class=types__item><a class=types__link href="#"> <svg>
+                                <use xlink:href=/static/fa/icons.svg?v=9m#piggy-bank></use>
+                            </svg> Бесплатные мероприятия </a>
+                        <li class=types__item><a class=types__link href="#"> <svg>
+                                <use xlink:href=/static/fa/icons.svg?v=9m#medal></use>
+                            </svg> День Победы </a>
+                        <li class=types__item><a class=types__link href="#"> <svg>
+                                <use xlink:href=/static/fa/icons.svg?v=9m#paw></use>
+                            </svg> Животные </a>
+                        <li class=types__item><a class=types__link href="#"> <svg>
+                                <use xlink:href=/static/fa/icons.svg?v=9m#futbol></use>
+                            </svg> Здоровье и спорт </a>
+                        <li class=types__item><a class=types__link href="#"> <svg>
+                                <use xlink:href=/static/fa/icons.svg?v=9m#music></use>
+                            </svg> Классическая музыка </a>
+                        <li class=types__item><a class=types__link href="#"> <svg>
+                                <use xlink:href=/static/fa/icons.svg?v=9m#microphone></use>
+                            </svg> Концерты </a>
+                        <li class=types__item><a class=types__link href="#"> <svg>
                                 <use xlink:href=/static/fa/icons.svg?v=9m#music></use>
                             </svg> Музыка </a>
-                        <li class=types__item><a class=types__link href=/spb/lifestyle /> <svg>
+                        <li class=types__item><a class=types__link href="#"> <svg>
                                 <use xlink:href=/static/fa/icons.svg?v=9m#mug-hot></use>
                             </svg> Образ жизни </a>
-                        <li class=types__item><a class=types__link href=/spb/excursion /> <svg>
+                        <li class=types__item><a class=types__link href="#"> <svg>
                                 <use xlink:href=/static/fa/icons.svg?v=9m#eye></use>
                             </svg> Экскурсии </a>
+                        <li class=types__item><a class=types__link href="#"> <svg>
+                                <use xlink:href=/static/fa/icons.svg?v=9m#car></use>
+                            </svg> Авто-мото </a>
+                        <li class=types__item><a class=types__link href="#"> <svg>
+                                <use xlink:href=/static/fa/icons.svg?v=9m#hiking></use>
+                            </svg> Активный отдых </a>
                     </ul>
                 </div>
             </div>
@@ -4666,6 +4660,10 @@
         {% block regis %} {% endblock %}
         {% block sub %} {% endblock %}
         {% block cobinet %} {% endblock %}
+        {% block kurgan %} {% endblock %}
+        {% block obr %}{% endblock %}
+        {% block sea %}{% endblock %}
+        {% block opisaniya %}{% endblock %}
 
 
 

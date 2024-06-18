@@ -1,17 +1,78 @@
 {% extends 'base.html' %}
 
 
-
 {% block rec %}
-<h1>{{ title }}</h1>
-<br><br><br>
+<br>
+<div class="container content containerNopad content--padTop">
+    <div class=container-empty></div>
+        <!-- <div class=row>
+            <div>
+                <h1 style="padding:0;margin:2rem 0" class=h1>Екатеринбург Обучение и образование <small>Афиша
+                        мероприятий на Июнь 2024</small></h1>
+                <div style="max-width:600px;margin:0 0 2rem" class=subtitle>Посетите лучшие воркшопы, курсы,
+                    семинары и тренинги и обучитесь новым навыкам или улучшите старые! Раскройте свой полный
+                    потенциал с лучшими образовательными мероприятиями города.</div>
+            </div>
+        </div> -->
 
-        
 
-        <div class="container content containerNopad content--padTop">
+
             <div class=container-empty>
-                <h1 style=margin-bottom:1rem>Вам может понравиться</h1> Пока не можем найти рекомендованные для вас
-                мероприятия <br>
+                <h1 style=margin-bottom:1rem>Вам может понравиться</h1>Мы подобрали для вас другие мероприятия, на основе того, что вам интересно<br>
+                
+                <div class="i1 col-lg-4 col-md-6 col-sm-12 mb-4">
+                    <div class=event-block>
+                        <div class="innlink save-click event-image" data-id=10344246
+                            data-link=/ekb/lektsiia-nikolai-nosov-ne-tolko-dlia-event10344246>
+                            <picture>
+                                <source media="(max-width: 600px)"
+                                    srcset=https://static.gorodzovet.ru/uploads/2024/6/18/photo200-10344246.webp?v=032024
+                                    type=image/webp>
+                                <source media="(max-width: 3000px)"
+                                    srcset=https://static.gorodzovet.ru/uploads/2024/6/18/photo400-10344246.webp?v=032024
+                                    type=image/webp>
+                                <source
+                                    srcset=https://static.gorodzovet.ru/uploads/2024/6/18/photo600-10344246.webp?v=032024
+                                    type=image/webp><img alt="Лекция «Николай Носов. Не только для детей»"
+                                    fetchpriority=high importance=high
+                                    src=https://static.gorodzovet.ru/uploads/2024/6/18/photo600-10344246.jpg?v=032024>
+                            </picture>
+                        </div>
+                        <div class=event-date><a title="мероприятия в Екатеринбурге июня 2024" class=event-month
+                                href=/ekb/2024/june /> Июн </a><span class="event-day innlink"
+                                data-link=/ekb/day2024-06-18 /> 18 </span></div>
+                        <div class="innlink event-link save-click" data-id=10344246
+                            data-link=/ekb/lektsiia-nikolai-nosov-ne-tolko-dlia-event10344246><a
+                                href=/ekb/lektsiia-nikolai-nosov-ne-tolko-dlia-event10344246>
+                                <h3 class="lines lines2"><span> Лекция "Николай Носов. Не только для детей" </span>
+                                </h3>
+                            </a>
+                            <div class="lines lines4 mb-2">Лекция филолога Валентины Живаевой. Автор бессмертной
+                                трилогии о Незнайке и увлекательных книг о приключениях советской …</div>
+                        </div>
+                        <div class=event-meta>
+                            <div class=event-tags><a title="Литература События в Екатеринбурге" class=tag
+                                    href=/ekb/books /><svg>
+                                    <use xlink:href=/static/fa/icons.svg?v=9m#book-open></use>
+                                </svg> Литература </a><a title="Культура События в Екатеринбурге" class=tag
+                                    href=/ekb/culture /><svg>
+                                    <use xlink:href=/static/fa/icons.svg?v=9m#image></use>
+                                </svg> Культура </a><a title="Для детей События в Екатеринбурге" class=tag
+                                    href=/ekb/kids /><svg>
+                                    <use xlink:href=/static/fa/icons.svg?v=9m#child></use>
+                                </svg> Для детей </a><a title="Бесплатно События в Екатеринбурге" class=tag
+                                    href=/ekb/free /><svg>
+                                    <use xlink:href=/static/fa/icons.svg?v=9m#piggy-bank></use>
+                                </svg> Бесплатно </a></div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                
+                
+                
                 <div class=popular-ets><a class="btn btn-default btn-lg tag-figures btn-light" data-id=it
                         href=/spb/it /> <svg>
                         <use xlink:href=/static/fa/icons.svg?v=9m#laptop-code></use>
@@ -69,5 +130,20 @@
                 </div>
             </div>
         </div>
+
+        <!-- Chatra {literal} -->
+<script>
+    (function(d, w, c) {
+        w.ChatraID = '85cwRRtTqeHof9uhS';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+        };
+        s.async = true;
+        s.src = 'https://call.chatra.io/chatra.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+</script>
+<!-- /Chatra {/literal} -->
 
 {% endblock %}

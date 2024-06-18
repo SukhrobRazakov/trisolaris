@@ -1,0 +1,1304 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+
+<head>
+    <title>Личный кабинет организатора</title>
+    <meta name="description"
+        content="Личный кабинет позволяет организаторам мероприятий контролировать отображение их мероприятий в афише города." />
+
+    <meta name="google-site-verification" content="RHmwWct1bp0jtTDYLsCVuyoyI2a9TaDfMKmDqFpfq2g" />
+    <meta name='yandex-verification' content='68886b663015b804' />
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="shortcut icon" type="image/x-icon" href="//127.0.0.1:8000/static/venue/img/oltin.jpg" />
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css" />
+
+
+
+    <link rel="stylesheet" href="/static/css/style.css?v=59l" />
+
+    <style>
+        .btn {
+            font-size: 100%;
+        }
+
+        svg {
+            width: 1em;
+            height: 1em;
+            fill: currentColor;
+            display: inline-block;
+            opacity: 0.9;
+            margin-top: -3px;
+        }
+    </style>
+
+
+    <style>
+        .select2 {}
+
+        .select2-container--default .select2-results>.select2-results__options {
+            max-height: 400px;
+        }
+
+        .select2-container--default .select2-results>.select2-results__options {
+            font-size: 1.4rem;
+            line-height: 1.1rem;
+        }
+
+        .select2-results__option {
+            /* padding: 0; */
+        }
+
+        .select2-container--default .select2-results__group {
+            padding: 2px;
+        }
+
+        .select2-container--default .select2-selection--single .select2-selection__rendered {
+            height: 30px;
+        }
+
+        .select2-container .select2-selection--single {
+            height: 30px;
+        }
+
+        .select2-results strong {
+            font-weight: bold;
+            padding: 5px 0;
+        }
+
+        body {
+            background: #fbfafa;
+        }
+
+        header.main,
+        footer.main {
+            background: #474747;
+        }
+
+        .highlight {
+            background: #f8f9de;
+            box-shadow: 0 1px 0 0 #d7d8db, 0 0 0 1px #e3e4e8;
+        }
+
+        small {
+            display: inline-block;
+        }
+
+        .progress {
+            height: 20px;
+            width: 100%;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #345BA9;
+            width: 0%;
+            border-radius: 5px;
+            transition: width 2s ease-in-out;
+        }
+
+        .obj-links a {
+            margin-right: 15px;
+        }
+
+        .dropdown-menu {
+            min-width: 250px;
+        }
+
+
+        .event-image-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .active-event-image {
+            text-decoration: underline;
+            font-size: 110%;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .inactive-event-image {
+            color: #333;
+            width: 100%;
+            min-height: 200px;
+        }
+
+        .upload-image {
+            text-align: center;
+            margin: 30px;
+            font-size: 30px;
+            color: red;
+            text-decoration: underline;
+        }
+
+        .extra-photos {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+        }
+    </style>
+
+
+
+</head>
+
+
+<body>
+    <header class="main">
+        <div class="container">
+            <div class="row">
+                <div class="col-1 col-sm-4 col-lg-4" style="padding-right: 0; padding-top: 9px;">
+                    <a class="visible-xs-inline-block d-inline d-md-none" style="margin-top: 0px;" href="/">
+                        <svg>
+                            <use xlink:href="/static/fa/icons.svg?v=9m#map-marker"></use>
+                        </svg>
+                    </a>
+
+
+                    <a href="/" style="color: #e6a33e; text-decoration: none; " target="_blank"
+                        class="btn-top hidden-xs d-none d-md-inline" style="margin-right: 10px;"
+                        title="ГородЗовёт gorodzovet.ru">
+                        <svg>
+                            <use xlink:href="/static/fa/icons.svg?v=9m#map-marker"></use>
+                        </svg>
+                        Начало
+                    </a>
+                    <i class="fas fa-angle-right hidden-md hidden-sm hidden-xs d-none d-lg-inline"
+                        style="opacity: 0.5; color: #fff;"></i>
+
+                    <a href="/" style="margin-left: 40px; color: #e2ded8;"
+                        title="Кабинет организатора admin.gorodzovet.ru"
+                        class="hidden-sm hidden-xs d-none d-md-inline btn-top top-link-home" style="color: #fff;">
+                        Кабинет организатора
+                    </a>
+
+                </div>
+                <div class="col-11 col-sm-8 col-lg-8" style="text-align: right; padding-top: 5px; padding-left: 0;">
+
+
+
+
+                    <div class="dropdown btn-group">
+
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu5"
+                            data-bs-toggle="dropdown" data-toggle="dropdown" aria-expanded="false">
+                            <svg>
+                                <use xlink:href="/static/fa/icons.svg?v=9m#info-circle"></use>
+                            </svg>
+                            <span class="" style="color: #f5f5f5;">Поддержка</span>
+                            <span class="caret"></span>
+                        </button>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenu5">
+                            <a class="dropdown-item" href="/ru/faq/"
+                                style="border-bottom: 1px solid #fff; padding-bottom: 2px;">
+                                <svg>
+                                    <use xlink:href="/static/fa/icons.svg?v=9m#info-circle"></use>
+                                </svg> Ответы на частые вопросы
+                            </a>
+                            <a class="dropdown-item" tabindex="-1" href="/terms/">
+                                <svg>
+                                    <use xlink:href="/static/fa/icons.svg?v=9m#list"></use>
+                                </svg> Правила
+                            </a>
+                            <a class="dropdown-item" href="#" onclick="Chatra('openChat', true)">
+                                <svg>
+                                    <use xlink:href="/static/fa/icons.svg?v=9m#comments"></use>
+                                </svg>
+                                Онлайн чат
+                            </a>
+                        </div>
+
+
+
+                    </div>
+
+
+<!--  zdes silka dobavit na opublikovanniy meropriyatie  -->
+
+                    <a href="{% url 'public' %}" class="show-loading btn btn-default">
+                        <i class="fas fa-check"></i> <span style="color: #f5f5f5;"
+                            class="hidden-xs d-none d-sm-inline">снять с публикацией</span>
+                    </a>
+
+
+
+                    <a class="btn btn-default block-loading"
+                        style="display: none; margin-left: 10px; margin-right: 10px;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        Пожалуйста, подождите... ...
+                    </a>
+
+                    <button class="btn btn-success show-loading show-save form-live-submit" id="form-live-submit">
+                        <i class="fas fa-save"></i> <a href="#"></a>Сохранить</a>
+                        
+                    </button>
+
+
+
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+<!-- ============================================================================================================================== -->
+
+
+
+
+<style>
+    .small {
+        font-size: 0.5em;
+        line-height: 0.9em;
+        display: inline-block;
+    }
+
+    .stats-userevents-block {
+        margin-bottom: 0.8rem;
+        opacity: 0.5;
+        display: block;
+    }
+
+    .stats-userevents-block small {
+        display: block;
+    }
+
+    .jqstooltip {
+        width: 100px !important;
+        height: 20px !important;
+    }
+
+    .jqstooltip span {
+        display: none;
+    }
+
+    th {
+        font-size: 14px;
+    }
+
+    .orange-reset,
+    .orange-reset .orange {
+        color: inherit !important;
+    }
+
+    .orange-reset {
+        margin-bottom: 1rem;
+    }
+
+    .orange-reset svg {
+        fill: inherit !important;
+        width: 0.6em;
+        height: 0.8em;
+        margin-top: -2px;
+    }
+
+    .stats-table label {
+        text-transform: uppercase;
+        font-weight: 500;
+        margin: 0.5rem 0 0.5rem;
+        color: #7e7d7d;
+        font-size: 16px;
+    }
+
+    .stat-d {
+        margin-right: 1rem;
+    }
+
+    .listing-row .col-12 {
+        margin-bottom: 1.5rem;
+        font-size: 20px;
+    }
+
+    .listing-row label {
+        text-transform: uppercase;
+        font-weight: 500;
+        margin: 0.5rem 0 0.5rem;
+        color: #7e7d7d;
+        font-size: 16px;
+    }
+
+    .stats-recommendations ul,
+    .stats-recommendations ol {
+        margin-top: 0.3rem;
+    }
+
+    .stats-recommendations ul ul {
+        margin-top: 0.2rem;
+    }
+
+    .stats-recommendations h4 {
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+        background: #eee;
+        padding: 0.5rem;
+    }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-sparklines/2.1.2/jquery.sparkline.min.js"></script>
+
+<div class="admin-cart" style="padding: 0; margin-top: 5rem;">
+
+    <div class="row">
+        <div class="col-md-2" style="background: #eee; padding: 1em; margin-bottom: 2rem;">
+            <a href="/ev/add/" class="btn btn-xs btn-default"><svg>
+                    <use xlink:href="https://admin.gorodzovet.ru/static/fa/icons.svg?v=4#plus"></use>
+                </svg> Добавить мероприятие</a>
+            <br><br>
+
+
+            <a href="/stats/10348429/" class="stats-userevents-block" style="opacity: 1;">
+
+                <small>ITISconf– 2024</small>
+            </a>
+
+        </div>
+
+
+        <div class="col-md-7" style="padding: 1rem 3rem; margin-bottom: 2rem;">
+
+            <div class='d-flex flex-row justify-content-start' style='margin-bottom: 3rem;'>
+                <div class="d-flex flex-column">
+                    <img src="https://static.gorodzovet.ru/uploads/2024/6/27/photo600-10348429.jpg?181912"
+                        style="max-width: 180px; height: 80px; width: auto; margin-right: 2rem;" />
+                </div>
+                <div class="d-flex flex-column flex-wrap justify-content-end flex-grow-1">
+                    <h4 style='margin-bottom: 9px; font-size: 20px;'>
+                        ITISconf– 2024
+
+                    </h4>
+                    <div class="d-flex flex-row flex-wrap">
+                        <span class='stat-d'>
+                            <a href="/10348429/" class='btn btn-default btn-xs'>
+                                <i class='fa fa-edit'></i>&nbsp;Редактировать
+                            </a>
+                        </span>
+                        <span class='stat-d d-none d-md-inline'>
+                            <i class='fa fa-calendar'></i>&nbsp;20.06.2024
+                        </span>
+                        <span class='stat-d d-none d-md-inline'>
+                            <i class='fa fa-map-marker'></i>&nbsp;Екатеринбург
+                        </span>
+                        <span class='stat-d'>
+                            #id0019
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <h1 style="margin-bottom: 0; margin-top: 5rem;">Статистика мероприятие</h1>
+            <p style="margin-bottom: 3rem;">
+                Обзор статистики по вовлеченности посетителей. Данные обновляются несколько раз в сутки.
+            </p>
+
+
+
+            <div class="stats-table">
+                <div class="row d-none d-md-flex"
+                    style="margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 0.2rem;">
+                    <label class="col-12 col-sm-4">Платформа</label>
+
+                    <label class="col-12 col-sm-2">Просмотры</label>
+
+                    <label class="col-12 col-sm-2">Визиты</label>
+
+                    <label class="col-12 col-sm-2">Клики по ссылке</label>
+
+                    <label class="col-12 col-sm-2">Дополнительные данные</label>
+                </div>
+
+
+                <div class="row listing-row">
+                    <div class="col-12 col-sm-4">
+
+                        <img src="127.0.0.1"
+                            style="max-width: 20px; max-height: 20px; margin-top: -2px;">
+
+                        <b>Мир меропритий</b>
+                        <br>
+
+                        <a href="127.0.0.1" target="_blank"
+                            style="color: inherit; text-decoration: none; display: inline-block; font-size: 11px; line-height: 14px; opacity:0.4; font-weight: normal;">127.0.0.1</a>
+
+                    </div>
+
+
+
+                    <div class="col-12 col-sm-2">
+                        <label class="d-block d-md-none">Просмотры</label>
+
+                        <b>0</b>
+                        <div id="sparkline-blocks-46179"></div>
+
+                    </div>
+
+                    <div class="col-12 col-sm-2">
+                        <label class="d-block d-md-none">Визиты</label>
+
+                        <small>Эта опция только для платных анонсов.
+                            Сохраните анонс и выберите вариант платного размещения.</small>
+
+                    </div>
+
+                    <div class="col-12 col-sm-2">
+                        <label class="d-block d-md-none">Клики по ссылке</label>
+
+                        <small>Эта опция только для платных анонсов.
+                            Сохраните анонс и выберите вариант платного размещения.</small>
+
+                    </div>
+
+
+
+                    <div class="col-12 col-sm-2" style="font-size: 14px;">
+                        <label class="d-block d-md-none">Дополнительные данные</label>
+
+
+                        Рейтинг:&nbsp;45/100
+                        <div id="sparkline-source_rating-46179"></div>
+
+
+                    </div>
+
+
+                    <script>
+
+
+                        var datesForblocks = ["05.06.2024", "06.06.2024", "07.06.2024", "08.06.2024", "09.06.2024", "10.06.2024", "11.06.2024", "12.06.2024", "13.06.2024", "14.06.2024", "15.06.2024", "16.06.2024", "17.06.2024",];
+
+                        $("#sparkline-blocks-46179").sparkline([3, 10, 25, 35, 95, 110, 120, 125, 130, 135, 145, 150, 160,], {
+                            type: 'line', width: '50px', fillColor: null,
+                            tooltipFormatter: function (sparkline, options, fields) {
+                                var date = datesForblocks[fields.x];
+                                return date + ": " + fields.y;
+                            }
+                        });
+
+                        var datesForviews = ["05.06.2024", "06.06.2024", "07.06.2024", "08.06.2024", "09.06.2024", "10.06.2024", "11.06.2024", "12.06.2024", "13.06.2024", "14.06.2024", "15.06.2024", "16.06.2024", "17.06.2024",];
+
+                        $("#sparkline-views-46179").sparkline([1, 2, 2, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4,], {
+                            type: 'line', width: '50px', fillColor: null,
+                            tooltipFormatter: function (sparkline, options, fields) {
+                                var date = datesForviews[fields.x];
+                                return date + ": " + fields.y;
+                            }
+                        });
+
+                        var datesForactions_count = ["05.06.2024", "06.06.2024", "07.06.2024", "08.06.2024", "09.06.2024", "10.06.2024", "11.06.2024", "12.06.2024", "13.06.2024", "14.06.2024", "15.06.2024", "16.06.2024", "17.06.2024",];
+
+                        $("#sparkline-actions_count-46179").sparkline([, , , , , , , , , , , , ,], {
+                            type: 'line', width: '50px', fillColor: null,
+                            tooltipFormatter: function (sparkline, options, fields) {
+                                var date = datesForactions_count[fields.x];
+                                return date + ": " + fields.y;
+                            }
+                        });
+
+                        var datesForsource_rating = ["05.06.2024", "06.06.2024", "07.06.2024", "08.06.2024", "09.06.2024", "10.06.2024", "11.06.2024", "12.06.2024", "13.06.2024", "14.06.2024", "15.06.2024", "16.06.2024", "17.06.2024",];
+
+                        $("#sparkline-source_rating-46179").sparkline([-5, -5, -5, -5, -5, -5, -5, -5, -5, -5, -5, -5, 45,], {
+                            type: 'line', width: '50px', fillColor: null,
+                            tooltipFormatter: function (sparkline, options, fields) {
+                                var date = datesForsource_rating[fields.x];
+                                return date + ": " + fields.y;
+                            }
+                        });
+
+                    </script>
+
+                </div>
+
+
+
+
+                <div class="row">
+                    <div class="col-12 col-sm-4">
+                    </div>
+                    <div class="col-12 col-sm-8" style="padding-top: 1rem;">
+                        <b>Как улучшить эти показатели?</b>
+                        Платформа автоматически учитывает множество факторов при формировании списка анонсов. Мы
+                        ценим хорошо оформленные привлекательные анонсы.
+                        <br><br>
+                        Вот что вы можете сделать, чтобы увеличить охват, просмотры и конверсии и привлечь больше
+                        участников на ваши мероприятия:
+                        <br>
+                        <br>1. Следуйте всем подсказкам от системы (выделены оранжевым цветом)
+                        <br>2. Выберите вариант платного размещения (кнопка Улучшить)
+                        <br>3. Обратитесь в чат поддержки. Возможно, мы сможем помочь
+                    </div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+            <h2 style="margin-top: 3rem;">Рассылки</h2>
+
+
+            <div style="font-size: 90%; margin: 0.3rem 0;">
+                <a href="#" target="_blank">
+                    <svg>
+                        <use xlink:href="#"></use>
+                    </svg>
+                    Пост в ВК
+                    <small>17.06.24 07:57</small>
+                </a>
+            </div>
+
+
+
+
+
+            <div class="d-none d-md-block" style="opacity: 0.7; margin-top: 8rem;">
+                <h4>История изменений</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Дата</th>
+                            <th scope="col">Изменения</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+ 
+
+                        <tr>
+                            <td><small>16.06.2024 10:02</small></td>
+                            <td>Создано</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+
+
+
+
+
+            <div style="margin-top: 5rem">
+                <form method="post" action="/ajax/save/feedback/" id="feedback-form" class="feedback-form"
+                    onsubmit="submitForm(event, 'feedback-form'); return false;"><input type="hidden"
+                        name="csrfmiddlewaretoken"
+                        value="PNwFZrlSCCbAkHcRs4G40UHENGubdFOH7E2p4ptxvAEElsa18zXkPv3YhGh30a8S">
+                    <h3 style="margin-bottom: 0;">Учтём ваше мнение!</h3>
+                    <p>Поделитесь своими мыслями об этой странице. Что нравится, что не нравится. Какие еще
+                        возможности можем добавить. Любые ваши идеи приветствуются!</p>
+                    <div class="form-error"></div>
+                    <div class="form-success" class="alert alert-success" style="display: none"></div>
+                    <input type="text" style="display:none;" value="razakovsukhrob@yandex.ru" name="email" />
+                    <input type="text" style="display:none;" value="/stats/10348429/" name="event_url" />
+                    <textarea name="message" cols="40" rows="10" placeholder="" style="max-height: 100px"
+                        required="required" class="form-control" id="id_message">
+</textarea>
+                    <div style="text-align: right; margin: 10px 0 10px">
+                        <button class="btn btn-default btn-light ">Отправить</button>
+                    </div>
+                </form>
+            </div>
+
+
+            <script>
+                function getFetchHeadersWithoutContentType() {
+                    // const { csrfToken } = window.djangoData;
+                    const { csrfToken } = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+                    return {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRFToken': csrfToken,
+                    };
+                }
+
+                function submitForm(event, formId) {
+                    event.preventDefault()
+                    const form = $('#' + formId); // feedback-form
+                    const formData = new FormData(form[0]);
+                    const href = window.location.href;
+                    formData.append('from_page', href);
+
+                    fetch(form.attr('action'), {
+                        method: form.attr('method'),
+                        headers: getFetchHeadersWithoutContentType(),
+                        body: formData,
+                    }
+                    )
+                        .then((response) => response.json())
+                        .then((data) => {
+                            if (data.html) {
+                                form.html(data.html);
+                            } else if (data.result == 'ok') {
+                                form.find('.form-success').html(data.result_message);
+                                form.find('.form-success').show();
+                            } else {
+                                form.find('.form-error').html(data.result_message);
+                            }
+                        });
+                }
+            </script>
+
+        </div>
+
+
+
+        <div class="col-md-3" style="border-left: 1px solid #eee; padding: 1rem;">
+            <h4>Как увеличить охват и привлечь больше посетителей</h4>
+
+
+
+
+
+
+            <div style="height: 42px;">
+                <div class="star-ratings-css"
+                    title="Рейтинг 45/100 отражает качество заполнения анонса  и влияет на охват">
+                    <div class="star-ratings-css-top" style="width: 57px; color: #e97c03;">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                    <div class="star-ratings-css-bottom">
+                        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="admin-hint orange orange-reset22">
+                <svg>
+                    <use xlink:href="https://admin.gorodzovet.ru/static/fa/icons.svg?v=4#lightbulb"></use>
+                </svg>
+                <span class="orange">Опишите подробно (1000-2000 символов)</span>
+            </div>
+
+            <div class="admin-hint orange orange-reset22">
+                <svg>
+                    <use xlink:href="https://admin.gorodzovet.ru/static/fa/icons.svg?v=4#lightbulb"></use>
+                </svg>
+                <span class="orange">Добавьте выступающих</span>
+            </div>
+
+            <div class="admin-hint orange orange-reset22">
+                <svg>
+                    <use xlink:href="https://admin.gorodzovet.ru/static/fa/icons.svg?v=4#lightbulb"></use>
+                </svg>
+                <span class="orange">Добавьте видео</span>
+            </div>
+
+            <div class="admin-hint orange orange-reset22">
+                <svg>
+                    <use xlink:href="https://admin.gorodzovet.ru/static/fa/icons.svg?v=4#lightbulb"></use>
+                </svg>
+                <span class="orange">Добавьте дополнительные фото</span>
+            </div>
+
+
+
+
+            <div class="stats-recommendations" style="font-size: 14px">
+
+
+
+
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+<!-- =============================================================================================================================== -->
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter42972689 = new Ya.Metrika2({
+                        id: 42972689,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true,
+                        webvisor: true
+                    });
+                } catch (e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks2");
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/42972689" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/i18n/ru.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/i18n/en.js"></script>
+    <script>
+        $(function () {
+            $(".select2").select2({
+                language: "ru"
+            });
+        });
+
+
+        $(function () {
+            $('.select22').select2({
+                language: "ru",
+                theme: 'bootstrap4',
+                placeholder: '',
+                escapeMarkup: function (markup) {
+                    return markup;
+                },
+                templateResult: function (data) {
+                    if (!data.id) { return data.text; }
+                    var $icon = '<i class="fas fa-' + data.element.dataset.icon + '"></i> ';
+                    var $text = data.text;
+                    return $icon + $text;
+                }
+            });
+        });
+
+
+        $(function () {
+            $(".select2place").select2({
+                language: "ru",
+                ajax: {
+                    url: '/ajax/get/objects/?object_type=place',
+                    dataType: 'json'
+                }
+            });
+        });
+    </script>
+
+
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.3.0/jquery.autocomplete.min.js"></script>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var MAX_SEANCES = 4;
+            var seances_count = 0;
+            ///var DEFAULT_DATE = moment().format('DD.MM.YYYY');
+
+            $('#add_seance').click(function () {
+                if (seances_count < MAX_SEANCES) {
+                    // create new seance form fields
+                    var $seance = $('<div class="seance"></div>');
+                    var $date = $('<input class="form-control date monitor-change dynamic dynamicDatepicker" name="seances-' + seances_count + '-date">');
+                    var $time = $('<input type="time" class="form-control timepicker monitor-change dynamic dynamicTimepicker" style="max-width: 100px;" name="seances-' + seances_count + '-time">');
+                    $seance.append($date);
+                    $seance.append($time);
+                    $('#seances').append($seance);
+                    seances_count++;
+                }
+            });
+        });
+    </script>
+
+
+    <script>
+        function show_save() {
+            $(".show-save").addClass("btn-success").removeClass("btn-default");
+        };
+
+        $('select').change(function () {
+            show_save();
+        });
+        $('input').change(function () {
+            show_save();
+        });
+        $('textarea').change(function () {
+            show_save();
+        });
+
+        //$(document).on(".monitor-change",  // for dynamic fields
+        $('.monitor-change', '[contenteditable]').each(function () {
+            var elem = $(this);
+            elem.data('oldVal', elem.val());
+
+            elem.bind("propertychange change click keyup input paste", function (event) {
+                if (elem.data('oldVal') != elem.val()) {
+                    elem.data('oldVal', elem.val());
+
+                    show_save();
+                }
+            });
+        });
+
+
+
+
+        $(document).on("click", ".performer-remove, .organizer-remove", function () {
+            let idToRemove = $(this).data('id').toString();
+            let object_type = $(this).data('object_type');
+            let $input = $("#id_" + object_type + "s");
+            let currentIds = $input.val().split(',').map(String);
+            let newIds = currentIds.filter(id => id !== idToRemove);
+            $input.val(newIds.join(','));
+
+            $(this).parent().remove();
+            show_save();
+        });
+
+
+        $(document).on("click", ".place-remove", function () {
+            //console.log('place-remove');
+            id = '' + $(this).data('id');
+            $("#id_place option[value=" + id + "]").remove();
+            $(this).parent().remove();
+            $("#show-place").hide();
+            $("#place_selected").hide();
+            $("#place_hint").show();
+
+            show_save();
+        });
+
+
+        $('.autocomplete').autocomplete({
+            serviceUrl: function (el, query) {
+                var city_id = "";
+                if (!city_id) {
+                    city_id = $("#id_city").val();
+                }
+                if (!city_id) {
+                    $("#set_city").show();
+                    $("#place_hint").hide();
+                } else {
+                    $("#set_city").hide();
+                }
+                return "/ajax/get/objects/?method=ajax&city_id=" + city_id + "&q=" + encodeURIComponent(query);
+            },
+            dataType: 'json',
+            minChars: 3,
+            onSelect: function (suggestion) {
+                v = suggestion.value;
+                id = suggestion.data;
+                object_type = suggestion.object_type;
+                //console.log(v + ', ' + id);
+                if (object_type == 'performer' || object_type == 'organizer') {
+                    $('#show-' + object_type).append('<span>' + v + '<i class="fas fa-remove ' + object_type + '-remove" data-id="' + id + '"></i></span>');
+                } else {
+                    $('#show-' + object_type).html('<span>' + v + ' <i class="fas fa-remove ' + object_type + '-remove" data-id="' + id + '"></i></span>');
+                }
+                $("#autocomplete-" + object_type).val("");
+                $("#id_" + object_type).append('<option value="' + id + '">' + v + '</option>');
+                //console.log("#id_"+object_type);
+                $("#id_" + object_type + " option[value='" + id + "']").prop("selected", true);
+
+                if (object_type == 'place') {
+                    $("#id_" + object_type + "s").val(id);
+                } else {
+                    // several values
+                    v = $("#id_" + object_type + "s").val();
+                    $("#id_" + object_type + "s").val(v + ',' + id);
+                }
+
+                $("#select_place").hide();
+                $("#place_selected").show();
+                show_save();
+            },
+            onSearchStart: function () {
+                $("#looking_for_places").show();
+                $("#set_city").hide();
+                $("#select_place").hide();
+                $("#place_hint").hide();
+                $("#place_selected").hide();
+                $("#no_place_found").hide();
+            },
+            onSearchComplete: function () {
+                $("#looking_for_places").hide();
+                $("#select_place").show();
+                $("#no_place_found").hide();
+            },
+            onSearchError: function (query, jqXHR, textStatus, errorThrown) {
+                console.log("onSearcherror query: " + query + "textStatus: " + textStatus + " errorThrown: " + errorThrown);
+                if (errorThrown == "abort") {
+                    //next chars while typing  
+                } else {
+                    city_id = $("#id_city").val();
+                    if (!city_id) {
+                        $("#set_city").show();
+                    } else {
+                        $("#no_place_found").show();
+                    }
+                    $("#looking_for_places").hide();
+                }
+            }
+        });
+        $('#autocomplete-place').autocomplete('setOptions', { params: { object_type: 'place' } });
+        $('#autocomplete-performer').autocomplete('setOptions', { params: { object_type: 'performer' } });
+        $('#autocomplete-organizer').autocomplete('setOptions', { params: { object_type: 'organizer' } });
+
+        $('#autocomplete-place').bind("paste", function (e) {
+            e.preventDefault();
+        });
+    </script>
+
+
+
+    <script type="text/javascript">
+        function adjustHeight(ctrl) {
+            if (ctrl.scrollHeight < 5000) {
+                $(ctrl).css({ 'height': 'auto', 'min-height': '400px', 'overflow-y': 'hidden' }).height(0).height(ctrl.scrollHeight);
+            }
+        }
+        $('textarea.resize').each(function () {
+            adjustHeight(this);
+        }).on('keyup keydown paste cut', function () { // change input
+            adjustHeight(this);
+        });   
+    </script>
+
+
+    <script>
+        $(".popup").on('submit', function (e) {
+            e.preventDefault();
+            var $form = $(this);
+            form_id = $form.attr('id');
+            data = $form.serialize();
+            select = $form.data('select'); // todo remove
+            object_type = $form.data('select');
+
+
+            $.ajax({
+                type: $form.attr('method'),
+                url: $form.attr('action'),
+                data: data,
+                dataType: "json",
+
+                success: function (msg, status) {
+                    message = msg["message"];
+                    id = msg["id"];
+                    console.log(msg);
+                    //console.log(id);
+
+                    if (message) {
+                        $("#" + form_id + " .result").html(message);
+                        $("#" + form_id + " .result").show();
+                    }
+
+                    if (id) {
+
+
+                        if (object_type == "performer") {
+                            v = $("#id_" + object_type + "s").val();
+                            $("#id_" + object_type + "s").val(v + ',' + id);
+                            $('#show-' + object_type).append('<span>' + msg.title + '<i class="fas fa-remove ' + object_type + '-remove" data-id="' + id + '"></i></span>');
+                        } else {
+                            $("#id_" + select).append($("<option></option>")
+                                .attr("value", id)
+                                .text(msg.title)
+                            );
+                            $("#id_" + select).val(id);
+                        }
+
+                        $('#myModal').modal('hide');
+                        $(".popup-launch").blur();
+
+                        $(".popup").hide();
+                    }
+
+                }
+            })
+
+        });
+    </script>
+
+
+
+
+    <script type="text/javascript">
+        $('#myModal').on('show.bs.modal', function (e) {
+            var form = $(e.relatedTarget).data('form');
+            //console.log(form);
+            if (form) {
+                $(e.currentTarget).find('#form-' + form).show();
+            }
+        });
+
+        $('#myModal').on('hidden.bs.modal', function () {
+            $(".popup").hide();
+        });
+    </script>
+
+
+    <script type="text/javascript">
+        //$(document).on('submit','#form-live'
+        //$(".form-live-submit").on('click', function(){
+        // $(document).on('click', '.form-live-submit', function () {
+        //     event.preventDefault();
+
+        //     // we need to move dynamic fields because add_seance_block doesn't append them to the form properly
+        //     $(document).find(".dynamic").each(function () {
+        //         $clone = $(this).clone();
+        //         $('#form-live').append($clone);
+        //         $clone.hide();
+        //     });
+        //     //return false;
+        //     $("#form-live").submit();
+        // });
+
+        // $('.alert').delay(3000).fadeOut('slow');
+
+        // $(".show-loading").on('click', function () {
+        //     $(this).hide();
+        //     $(".block-loading").show();
+        // })
+    </script>
+
+
+
+
+
+
+
+
+
+
+    <script>
+        yaCounter42972689.reachGoal('event_edit');
+    </script>
+
+
+
+
+    <!-- Chatra {literal} -->
+
+    <!-- <script>
+
+
+        (function (d, w, c) {
+            w.ChatraID = "dsyqNz5vb7zazvXn9";
+            var s = d.createElement('script');
+            w[c] = w[c] || function () {
+                (w[c].q = w[c].q || []).push(arguments);
+            };
+            s.async = true;
+            s.defer = true;
+            s.src = 'https://call.chatra.io/chatra.js';
+            if (d.head) d.head.appendChild(s);
+        })(document, window, 'Chatra');
+
+
+        Chatra('setIntegrationData', {
+            name: ' p0a1   (ru25123)',
+            email: 'razakovsukhrob@yandex.ru',
+            events: '1',
+            paid_events: '0',
+            priority: '',
+            city: 'Екатеринбург',
+        });
+
+
+    </script> -->
+
+    <!-- /Chatra {/literal} -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <footer class="main" style="margin-top: 100px;" title="lc = ru langru=">
+        <div class="footer-top-area">
+            <div class="container">
+                <div class="row row-wrap">
+                    <div class=" col-md-3 hidden-xs">
+                        <a href="/" style="color: #ea9e2e; text-decoration: none;">
+                            Мир меропритий
+
+                        </a>
+                        <br>
+
+
+
+                        <br>
+
+                        <span class="white" style="color: #f5f5f5;">Админка, личный кабинет организатора</span>
+
+
+                    </div>
+                    <div class=" col-md-9">
+
+
+
+
+
+
+                        <p style="color: #f5f5f5;">
+                            Свяжитесь с нами, если у вас есть какие-то вопросы или предложения
+                            <br />
+
+                            <a href="#" style="border-bottom: 1px solid #fff; padding-bottom: 2px; margin-right: 2rem;"
+                                onclick="Chatra('openChat', true)">
+                                <svg>
+                                    <use xlink:href="/static/fa/icons.svg?v=9m#comments"></use>
+                                </svg>
+                                <!-- Онлайн чат -->
+                            </a>
+
+
+
+
+
+
+                        </p>
+
+                    </div>
+                    <div class=" col-md-4">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter42972689 = new Ya.Metrika2({
+                        id: 42972689,
+                        clickmap: true,
+                        trackLinks: true,
+                        accurateTrackBounce: true,
+                        webvisor: true
+                    });
+                } catch (e) { }
+            });
+
+            var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            } else { f(); }
+        })(document, window, "yandex_metrika_callbacks2");
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/42972689" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+
+
+
+
+
+
+<!-- Chatra {literal} -->
+<script>
+    (function(d, w, c) {
+        w.ChatraID = '85cwRRtTqeHof9uhS';
+        var s = d.createElement('script');
+        w[c] = w[c] || function() {
+            (w[c].q = w[c].q || []).push(arguments);
+        };
+        s.async = true;
+        s.src = 'https://call.chatra.io/chatra.js';
+        if (d.head) d.head.appendChild(s);
+    })(document, window, 'Chatra');
+</script>
+<!-- /Chatra {/literal} -->
+
+
+
+</body>
+
+</html>

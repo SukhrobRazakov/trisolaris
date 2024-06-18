@@ -10,7 +10,9 @@ from django.template.defaultfilters import slugify
 from django.views import View
 from django.views.generic import TemplateView, ListView, DetailView, FormView, CreateView, UpdateView
 
+from .models import Venue
 
+#
 # from .forms import AddPostForm, UploadFileForm
 # from .models import Venue, Category, TagPost, UploadFiles
 
@@ -109,8 +111,8 @@ class TagPostList(DataMixin, ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        tag = TagPost.objects.get(slug=self.kwargs['tag_slug'])
-        return self.get_mixin_context(context, title='Тег: ' + tag.tag)
+        # tag = TagPost.objects.get(slug=self.kwargs['tag_slug'])
+        # return self.get_mixin_context(context, title='Тег: ' + tag.tag)
 
     def get_queryset(self):
         return Venue.published.filter(tags__slug=self.kwargs['tag_slug']).select_related('cat')
@@ -154,6 +156,9 @@ def show_post(request, post_id):
 def cities(request):
     return render(request, "venue/cities.html", {"title": "Мероприятия города"})
 
+def kurgan(request):
+    return render(request, "venue/kurgan.html", {"title": "Научные и Культурные мероприятия в Кургане"})
+
 
 def plan(request):
     return render(request, "venue/plan.html", {"title": "Избранное"})
@@ -165,8 +170,8 @@ def recommend(request):
     )
 
 
-def page_not_found(request, exception):
-    return HttpResponseNotFound("<h1>Страница не найдена</h1>")
+# def page_not_found(request, exception):
+#     return HttpResponseNotFound("<h1>Страница не найдена</h1>")
 
 
 def chernovik(request):
@@ -191,4 +196,19 @@ def ch(request):
 
 def redactor(request):
     return render(request, "venue/redactor.html")
-    
+
+def public(request):
+    return render(request, "venue/public.html")
+
+
+def obr(request):
+    return render(request, "venue/obr.html")
+
+def sea(request):
+    return render(request, "venue/sea.html")
+
+def opisaniya(request):
+    return render(request, "venue/opisaniya.html")
+
+def chat(request):
+    return render(request, 'venue/chat.html')
