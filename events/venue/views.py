@@ -198,17 +198,17 @@ def redactor(request):
     return render(request, "venue/redactor.html")
 
 def public(request):
-    return render(request, "venue/public.html")
+    return render(request, "venue/public.html", {"title": "Статистика мероприятие"})
 
 
 def obr(request):
-    return render(request, "venue/obr.html")
+    return render(request, "venue/obr.html", {"title": "Екатеринбург Обучение и образование"})
 
 def sea(request):
-    return render(request, "venue/sea.html")
+    return render(request, "venue/sea.html", {"title": "Найти мероприятия в Екатеринбурге"})
 
 def opisaniya(request):
-    return render(request, "venue/opisaniya.html")
+    return render(request, "venue/opisaniya.html", {"title": "ITISconf–2024 20 июня 2024"})
 
 def chat(request):
     return render(request, 'venue/chat.html')

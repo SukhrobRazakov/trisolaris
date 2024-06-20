@@ -37,6 +37,16 @@
 
     <link rel="stylesheet" href="/static/css/style.css?v=59l" />
 
+    <!-- <style>
+        .description {
+          border: 1px solid #ccc; /* Граница */
+          padding: 10px; /* Внутренний отступ */
+          font-family: Arial, sans-serif; /* Шрифт */
+          color: #333; /* Цвет текста */
+          background-color: #f9f9f9; /* Цвет фона */
+        }
+    </style> -->
+
     <style>
         .btn {
             font-size: 100%;
@@ -50,6 +60,8 @@
             opacity: 0.9;
             margin-top: -3px;
         }
+
+        /* description */
     </style>
 
 
@@ -246,7 +258,7 @@
                     </div>
 
 
-<!--  zdes silka dobavit na opublikovanniy meropriyatie  -->
+                    <!--  zdes silka dobavit na opublikovanniy meropriyatie  -->
 
                     <a href="{% url 'public' %}" class="show-loading btn btn-default">
                         <i class="fas fa-check"></i> <span style="color: #f5f5f5;"
@@ -263,7 +275,7 @@
 
                     <button class="btn btn-success show-loading show-save form-live-submit" id="form-live-submit">
                         <i class="fas fa-save"></i> <a href="#"></a>Сохранить</a>
-                        
+
                     </button>
 
 
@@ -782,27 +794,28 @@
         <div class="cart">
             <div class="row" style="min-height: 230px">
                 <div class="col-12 col-md-3 col-md-push-9 order-md-1" style="min-height: 245px;">
-                                       
+
 
                     <!-- ======================================================================================================== -->
                     <!-- ======================================================================================================== -->
                     <!-- ======================================================================================================== -->
 
-                    
+
                     <!-- <picture>
-                        <source media="(max-width: 600px)"
-                            srcset=https://static.gorodzovet.ru/uploads/2023/4/27/photo200-9235570.webp?v=032024
+                        <source media="(max-width: 300px)"
+                            srcset=https://static.gorodzovet.ru/uploads/2024/6/20/photo200-10348429.webp?v=032024&m=170624181911
                             type=image/webp>
-                        <source media="(max-width: 3000px)"
-                            srcset=https://static.gorodzovet.ru/uploads/2023/4/27/photo400-9235570.webp?v=032024
+                        <source media="(max-width: 350px)"
+                            srcset=https://static.gorodzovet.ru/uploads/2024/6/20/photo400-10348429.webp?v=032024&m=170624181911
                             type=image/webp>
                         <source
-                            srcset=https://static.gorodzovet.ru/uploads/2023/4/27/photo600-9235570.webp?v=032024
-                            type=image/webp><img alt="Любовь людей" loading=lazy
-                            src=https://static.gorodzovet.ru/uploads/2023/4/27/photo600-9235570.jpg?v=032024>
+                            srcset=https://static.gorodzovet.ru/uploads/2024/6/20/photo600-10348429.webp?v=032024&m=170624181911
+                            type=image/webp><img alt="ITISconf– 2024" fetchpriority=high height=600 importance=high
+                            src=https://static.gorodzovet.ru/uploads/2024/6/20/photo600-10348429.jpg?v=032024&m=170624181911
+                            style=width:100%;height:auto;min-height:200px width=894>
                     </picture>
 
-                    <br><br> -->
+                    <br><br><br> -->
 
 
                     <!-- ======================================================================================================== -->
@@ -1357,7 +1370,7 @@
                                     <i class="fas fa-building"></i>
                                     Место проведения
 
-                                    <span id="place-top-hint"
+                                    <!-- <span id="place-top-hint"
                                         style="font-size: 70%; max-height: 20px; overflow: hidden;">
 
 
@@ -1400,7 +1413,7 @@
                                         <span class="red" id="no_place_found" style="display: none;">
                                             Место не найдено :(
                                         </span>
-                                    </span>
+                                    </span> -->
                                 </label>
 
 
@@ -1501,8 +1514,7 @@
 
 
                     <div id="description" style="">
-                        <textarea name="description" cols="40" rows="10" id="id_description">
-</textarea>
+                        <textarea name="description" cols="40" rows="10" id="id_description"></textarea>
 
 
 
@@ -2124,7 +2136,7 @@
 
 
 
-                        <div class="sub">
+                        <!-- <div class="sub">
 
 
                             <label style="display: block; margin-top: 10px; margin-bottom: 0;">
@@ -2139,7 +2151,7 @@
                             <small>макс</small>
                             <input type="number" name="max_price" step="1" class="form-control monitor-change"
                                 style="max-width: 70px; padding: 2px; display: inline" id="id_max_price">
-                            <!-- руб. None  -->
+                            
 
 
                             <div class="admin-hint">
@@ -2148,7 +2160,7 @@
 
 
 
-                        </div>
+                        </div> -->
 
 
                         <div class="sub">
@@ -3263,20 +3275,73 @@
 
 
 
-<!-- Chatra {literal} -->
-<script>
-    (function(d, w, c) {
-        w.ChatraID = '85cwRRtTqeHof9uhS';
-        var s = d.createElement('script');
-        w[c] = w[c] || function() {
-            (w[c].q = w[c].q || []).push(arguments);
-        };
-        s.async = true;
-        s.src = 'https://call.chatra.io/chatra.js';
-        if (d.head) d.head.appendChild(s);
-    })(document, window, 'Chatra');
-</script>
-<!-- /Chatra {/literal} -->
+    <!-- <div>
+        <button onclick="setFontStyle('bold')">Жирный</button>
+        <button onclick="setFontStyle('italic')">Курсив</button>
+        <button onclick="setFontStyle('underline')">Подчеркнутый</button>
+        <button onclick="increaseFontSize()">Увеличить шрифт</button>
+        <button onclick="decreaseFontSize()">Уменьшить шрифт</button>
+    </div>
+    <textarea id="description" style="width: 100%; height: 150px;"></textarea>
+    
+
+
+        <script>
+            function setFontStyle(style) {
+                let textarea = document.getElementById('description');
+                let currentStyle = textarea.style.fontWeight;
+                switch(style) {
+                    case 'bold':
+                        textarea.style.fontWeight = (currentStyle !== 'bold' ? 'bold' : 'normal');
+                        break;
+                    case 'italic':
+                        textarea.style.fontStyle = (textarea.style.fontStyle !== 'italic' ? 'italic' : 'normal');
+                        break;
+                    case 'underline':
+                        textarea.style.textDecoration = (textarea.style.textDecoration !== 'underline' ? 'underline' : 'none');
+                        break;
+                }
+            }
+            
+            function changeFontSize(change) {
+                let textarea = document.getElementById('description');
+                let currentSize = parseFloat(window.getComputedStyle(textarea, null).getPropertyValue('font-size'));
+                if (change === 'increase') {
+                    textarea.style.fontSize = (currentSize + 1) + 'px';
+                } else if (change === 'decrease') {
+                    textarea.style.fontSize = (currentSize - 1 > 10 ? currentSize - 1 : 10) + 'px';
+                }
+            }
+            
+            function increaseFontSize() {
+                changeFontSize('increase');
+            }
+            
+            function decreaseFontSize() {
+                changeFontSize('decrease');
+            }
+        </script> -->
+
+
+
+
+
+
+
+    <!-- Chatra {literal} -->
+    <script>
+        (function (d, w, c) {
+            w.ChatraID = '85cwRRtTqeHof9uhS';
+            var s = d.createElement('script');
+            w[c] = w[c] || function () {
+                (w[c].q = w[c].q || []).push(arguments);
+            };
+            s.async = true;
+            s.src = 'https://call.chatra.io/chatra.js';
+            if (d.head) d.head.appendChild(s);
+        })(document, window, 'Chatra');
+    </script>
+    <!-- /Chatra {/literal} -->
 
 
 

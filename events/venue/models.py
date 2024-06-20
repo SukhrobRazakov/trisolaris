@@ -4,7 +4,6 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 
-#
 
 def translit_to_eng(s: str) -> str:
     d = {'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd',
